@@ -14,18 +14,41 @@ body {
 }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #1A2030; }
+::-webkit-scrollbar-thumb { background: rgba(0,180,198,0.35); border-radius: 2px; }
 ::selection { background: rgba(0,180,198,0.28); }
 
-/* Technical grid overlay — very subtle, section-level decoration */
+/* ─── Signature design elements ──────────────────────────────────── */
+
+/* Technical grid overlay */
 .tech-grid {
   background-image:
-    linear-gradient(rgba(0,180,198,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,180,198,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(0,180,198,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,198,0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
-/* Mono label — the signature typographic element */
+/* Corner marks — L-bracket precision motif */
+.corner-marks { position: relative; }
+.corner-marks::before,
+.corner-marks::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(0,180,198,0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+.corner-marks::before {
+  top: -1px; left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.corner-marks::after {
+  bottom: -1px; right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Mono technical label */
 .label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -34,19 +57,38 @@ body {
   text-transform: uppercase;
   color: #00B4C6;
 }
+/* Muted label — fixed contrast */
 .label-muted {
   font-family: 'Courier New', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #5A6478;
+  color: rgba(255,255,255,0.42);
 }
 
-/* Hairline rule */
-.rule { height: 1px; background: rgba(0,180,198,0.15); }
+/* Hairline rules */
+.rule        { height: 1px; background: rgba(0,180,198,0.14); }
 .rule-strong { height: 1px; background: rgba(0,180,198,0.35); }
 
-/* Animate in */
-.ai-hidden { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+/* Teal glow — used on key elements */
+.teal-glow { filter: drop-shadow(0 0 28px rgba(0,180,198,0.28)); }
+
+/* Scan-line animation on the hero */
+@keyframes scan {
+  0%   { top: 0; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,180,198,0.6), transparent);
+  animation: scan 4s ease-in-out 0.8s both;
+}
+
+/* Animate-in */
+.ai-hidden  { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
 .ai-visible { opacity: 1; transform: none; }
