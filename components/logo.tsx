@@ -1,76 +1,84 @@
-"use client";
-import { useEffect, useRef } from "react";
-
-/* ─── The Dropshield mark ─────────────────────────────────────────────────
-   A water droplet whose pointed base becomes a shield point.
-   Inside: a wavy water-level line. Below it: water. Above: dry.
-   The water fill animates up on mount — core brand moment.
-─────────────────────────────────────────────────────────────────────────── */
-export function LogoMark({ size = 40, animate = false, className = "" }: { size?: number; animate?: boolean; className?: string }) {
-  const fillRef = useRef<SVGPathElement>(null);
-
-  useEffect(() => {
-    if (!animate || !fillRef.current) return;
-    fillRef.current.style.clipPath = "inset(100% 0 0 0 round 50%)";
-    const id = setTimeout(() => {
-      if (fillRef.current) {
-        fillRef.current.style.transition = "clip-path 1.8s cubic-bezier(0.34,1.2,0.64,1)";
-        fillRef.current.style.clipPath = "inset(42% 0 0 0 round 50%)";
-      }
-    }, 300);
-    return () => clearTimeout(id);
-  }, [animate]);
-
+/**
+ * ShieldSeal logo mark — SVG recreation from the ChatGPT-generated PNG.
+ * Teal shield (#00AAC2), white left divider, white-outer/teal-inner water drop.
+ * Works on any background colour.
+ */
+export function LogoMark({ size = 40, className = "" }: { size?: number; className?: string }) {
+  const h = Math.round(size * 1.12);
   return (
-    <svg width={size} height={Math.round(size * 1.3)} viewBox="0 0 56 72" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
-      {/* Outer shape — drop meets shield */}
+    <svg
+      width={size}
+      height={h}
+      viewBox="0 0 88 98"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Teal shield body */}
       <path
-        d="M28 3 C17 3 4 16 4 33 C4 52 14 65 28 69 C42 65 52 52 52 33 C52 16 39 3 28 3 Z"
-        fill="rgba(0,180,198,0.06)"
-        stroke="#00B4C6"
-        strokeWidth="1.5"
+        d="M44 96 C15 82 5 62 5 44 L5 20 C5 11 12 5 21 5 L67 5 C76 5 83 11 83 20 L83 44 C83 62 73 82 44 96 Z"
+        fill="#00AAC2"
       />
-      {/* Water fill — the animated element */}
+      {/* White left divider bar — echoes the notch in the real logo */}
+      <rect x="30" y="8" width="3.5" height="70" fill="white" rx="1.75" />
+      {/* Water drop — white outer ring */}
       <path
-        ref={fillRef}
-        d="M28 3 C17 3 4 16 4 33 C4 52 14 65 28 69 C42 65 52 52 52 33 C52 16 39 3 28 3 Z"
-        fill="#00B4C6"
-        fillOpacity="0.18"
-        style={animate ? { clipPath: "inset(100% 0 0 0 round 50%)" } : { clipPath: "inset(42% 0 0 0 round 50%)" }}
+        d="M57 23 C57 23 74 44 74 57 C74 67 66 75 57 75 C48 75 40 67 40 57 C40 44 57 23 57 23 Z"
+        fill="white"
       />
-      {/* Water level — wavy line, the signature mark element */}
+      {/* Water drop — teal inner fill */}
       <path
-        d="M9 32 Q16 27 23 32 Q30 37 37 32 Q44 27 49 30"
-        stroke="#00B4C6"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
+        d="M57 31 C57 31 70 49 70 59 C70 67 64 73 57 73 C50 73 44 67 44 59 C44 49 57 31 57 31 Z"
+        fill="#00AAC2"
       />
-      {/* Inner drop / dry zone indicator — a small elongated diamond */}
-      <path d="M28 11 L32 23 L28 28 L24 23 Z" fill="#00B4C6" fillOpacity="0.55" />
-      {/* Shield point accent at bottom */}
-      <path d="M23 62 L28 69 L33 62" stroke="#00B4C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   );
 }
 
-export default function Logo({ size = "md", animate = false, className = "" }: { size?: "sm"|"md"|"lg"|"xl"; animate?: boolean; className?: string }) {
-  const s = {
-    sm: { mark: 28, shield: 11, seal: 15, tag: 8.5, gap: 9 },
-    md: { mark: 38, shield: 14, seal: 20, tag: 10,  gap: 11 },
-    lg: { mark: 52, shield: 18, seal: 26, tag: 12,  gap: 14 },
-    xl: { mark: 80, shield: 26, seal: 38, tag: 16,  gap: 18 },
-  }[size];
+interface LogoProps {
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  onLight?: boolean;
+  className?: string;
+}
+
+const SIZES = {
+  xs: { mark: 24, name: 16, sub: 8,  gap: 8  },
+  sm: { mark: 30, name: 20, sub: 9,  gap: 10 },
+  md: { mark: 40, name: 26, sub: 11, gap: 13 },
+  lg: { mark: 52, name: 34, sub: 13, gap: 16 },
+  xl: { mark: 72, name: 46, sub: 16, gap: 20 },
+};
+
+export default function Logo({ size = "md", onLight = false, className = "" }: LogoProps) {
+  const s = SIZES[size];
+  const nameCol  = onLight ? "#090A0A" : "#FFFFFF";
+  const subCol   = onLight ? "#828D96" : "rgba(255,255,255,0.40)";
 
   return (
-    <div className={`flex items-center ${className}`} style={{ gap: s.gap }}>
-      <LogoMark size={s.mark} animate={animate} />
+    <div className={`inline-flex items-center ${className}`} style={{ gap: s.gap }}>
+      <LogoMark size={s.mark} />
       <div className="flex flex-col leading-none">
-        <div style={{ display:"flex", alignItems:"baseline", gap: 1 }}>
-          <span className="font-black text-white tracking-tight" style={{ fontSize: s.shield, letterSpacing:"-0.01em" }}>SHIELD</span>
-          <span className="font-black tracking-tight" style={{ fontSize: s.seal, color:"#00B4C6", letterSpacing:"-0.01em" }}>SEAL</span>
+        <div className="flex items-baseline leading-none" style={{ gap: 0 }}>
+          <span
+            className="font-display font-black leading-none tracking-tight"
+            style={{ fontSize: s.name, color: nameCol, letterSpacing: "-0.01em" }}
+          >
+            SHIELD
+          </span>
+          <span
+            className="font-display font-black leading-none tracking-tight"
+            style={{ fontSize: s.name, color: "#00AAC2", letterSpacing: "-0.01em" }}
+          >
+            SEAL
+          </span>
         </div>
-        <span className="label" style={{ marginTop: 3, color:"#5A6478" }}>Waterproofing</span>
+        <span
+          className="font-mono tracking-[0.22em] uppercase"
+          style={{ fontSize: s.sub, color: subCol, marginTop: "4px", fontWeight: 600 }}
+        >
+          Waterproofing
+        </span>
       </div>
     </div>
   );

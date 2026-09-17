@@ -2,93 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --font-inter: 'Inter', system-ui, sans-serif; }
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-barlow: 'Barlow Condensed', system-ui, sans-serif;
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: #0A0A0A;
+  background: #090A0A;
   color: rgba(255,255,255,0.88);
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: rgba(0,180,198,0.35); border-radius: 2px; }
-::selection { background: rgba(0,180,198,0.28); }
+::-webkit-scrollbar-track { background: #090A0A; }
+::-webkit-scrollbar-thumb { background: rgba(0,170,194,0.4); border-radius: 2px; }
+::selection { background: rgba(0,170,194,0.28); }
 
-/* ─── Signature design elements ──────────────────────────────────── */
-
-/* Technical grid overlay */
-.tech-grid {
-  background-image:
-    linear-gradient(rgba(0,180,198,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,180,198,0.035) 1px, transparent 1px);
-  background-size: 52px 52px;
-}
-
-/* Corner marks — L-bracket precision motif */
-.corner-marks { position: relative; }
-.corner-marks::before,
-.corner-marks::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: rgba(0,180,198,0.45);
-  border-style: solid;
-  pointer-events: none;
-}
-.corner-marks::before {
-  top: -1px; left: -1px;
-  border-width: 2px 0 0 2px;
-}
-.corner-marks::after {
-  bottom: -1px; right: -1px;
-  border-width: 0 2px 2px 0;
-}
-
-/* Mono technical label */
+/* ── Typographic helpers ───────────────────────────────────────────── */
 .label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #00B4C6;
+  color: #00AAC2;
 }
-/* Muted label — fixed contrast */
-.label-muted {
+.label-dim {
   font-family: 'Courier New', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.38);
 }
 
-/* Hairline rules */
-.rule        { height: 1px; background: rgba(0,180,198,0.14); }
-.rule-strong { height: 1px; background: rgba(0,180,198,0.35); }
+/* ── Rules ─────────────────────────────────────────────────────────── */
+.rule       { height: 1px; background: rgba(0,170,194,0.16); }
+.rule-s     { height: 1px; background: rgba(0,170,194,0.36); }
 
-/* Teal glow — used on key elements */
-.teal-glow { filter: drop-shadow(0 0 28px rgba(0,180,198,0.28)); }
+/* ── Animate-in ─────────────────────────────────────────────────────── */
+.ai-h { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
+.ai-v { opacity: 1 !important; transform: none !important; }
 
-/* Scan-line animation on the hero */
-@keyframes scan {
-  0%   { top: 0; opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+/* ── Very subtle teal dot texture for hero ──────────────────────────── */
+.dot-texture {
+  background-image: radial-gradient(circle, rgba(0,170,194,0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
-.scan-line {
-  position: absolute;
-  left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,180,198,0.6), transparent);
-  animation: scan 4s ease-in-out 0.8s both;
-}
-
-/* Animate-in */
-.ai-hidden  { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
-.ai-visible { opacity: 1; transform: none; }
