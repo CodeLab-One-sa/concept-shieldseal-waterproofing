@@ -8,4 +8,4 @@ User-agent: PerplexityBot
 Allow: /
 User-agent: Google-Extended
 Allow: /
-Sitemap: https://shieldseal.vercel.app/sitemap.xml
+Sitemap: https://shieldseal-waterproofing.vercel.app/sitemap.xml

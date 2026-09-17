@@ -5,7 +5,7 @@ export const COMPANY = {
   email: "info@shieldseal.co.za",
   address: "Unit 4, 18 Anvil Road, Germiston, Johannesburg, 1401",
   whatsapp: "https://wa.me/27113456700?text=Hi%20ShieldSeal%2C%20I%27d%20like%20a%20quote%20for%20waterproofing%20on%20my%20property.",
-  url: "https://shieldseal.vercel.app",
+  url: "https://shieldseal-waterproofing.vercel.app",
   nhbrc: "NHBRC Reg. No. 45821",
   founded: "2011",
   codelab: "https://codelabone.co.za/industries/waterproofing",

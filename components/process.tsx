@@ -4,46 +4,51 @@ import { PROCESS } from "@/lib/content";
 
 export default function Process() {
   return (
-    <section id="about" className="py-28 bg-surface">
-      <div className="max-w-7xl mx-auto px-5 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <AnimateIn className="relative h-[440px] rounded-2xl overflow-hidden order-2 lg:order-1">
-            <Image src="/images/process-inspect.jpg" alt="ShieldSeal site inspection and waterproofing assessment" fill className="object-cover object-center" quality={82} />
-            <div className="absolute inset-0 bg-charcoal/30" />
-            <div className="absolute bottom-5 left-5 right-5 bg-charcoal/85 backdrop-blur-md border border-white/[0.08] rounded-xl p-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-muted mb-1">Time from inspection to quote</p>
-                  <p className="text-2xl font-black text-orange">24 hours</p>
+    <section id="process" className="py-24 bg-ink relative overflow-hidden">
+      {/* Decorative large number in background */}
+      <div className="absolute top-0 right-0 text-[28rem] font-black text-white/[0.015] leading-none select-none pointer-events-none" aria-hidden="true">04</div>
+
+      <div className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
+        <AnimateIn className="mb-14">
+          <p className="text-amber text-[11px] font-bold tracking-[0.2em] uppercase mb-3">How it works</p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white text-balance leading-tight max-w-xl">From your first call to your 10-year guarantee.</h2>
+        </AnimateIn>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Steps with large decorative numbers */}
+          <div className="space-y-0">
+            {PROCESS.map((step, i) => (
+              <AnimateIn key={step.step} delay={i * 80}>
+                <div className="relative flex gap-0 group">
+                  {/* Large decorative step number */}
+                  <div className="shrink-0 w-20 lg:w-24 text-right pr-6 pt-1">
+                    <span className="text-[3.5rem] font-black leading-none text-amber/15 group-hover:text-amber/30 transition-colors duration-300 select-none tabular-nums">{String(step.step).padStart(2,"0")}</span>
+                  </div>
+                  <div className={`flex-1 pb-10 last:pb-0 border-l border-border pl-6 ${i < PROCESS.length - 1 ? "" : ""}`}>
+                    {i < PROCESS.length - 1 && <div className="absolute left-20 lg:left-24 top-14 bottom-0 w-px bg-border" aria-hidden="true" />}
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber absolute left-[calc(5rem-5px)] lg:left-[calc(6rem-5px)] top-2.5" aria-hidden="true" />
+                    <h3 className="text-[17px] font-bold text-white mb-2 mt-1">{step.title}</h3>
+                    <p className="text-white/50 text-[14px] leading-relaxed">{step.body}</p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xs text-muted mb-1">Jobs with no return leaks</p>
-                  <p className="text-2xl font-black text-white">97%</p>
+              </AnimateIn>
+            ))}
+          </div>
+
+          {/* Photo with stat overlay */}
+          <AnimateIn delay={60} className="relative h-[400px] lg:h-[460px] rounded overflow-hidden">
+            <Image src="/images/process-inspect.jpg" alt="ShieldSeal site inspection" fill className="object-cover" quality={82} />
+            <div className="absolute inset-0 bg-ink/40" />
+            <div className="absolute bottom-0 left-0 right-0">
+              {/* Orange bottom bar with stats */}
+              <div className="bg-amber p-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <div><p className="text-white/70 text-[11px] uppercase tracking-widest mb-1">Quote turnaround</p><p className="text-white text-2xl font-black">24 hours</p></div>
+                  <div><p className="text-white/70 text-[11px] uppercase tracking-widest mb-1">No-return rate</p><p className="text-white text-2xl font-black">97%</p></div>
                 </div>
               </div>
             </div>
           </AnimateIn>
-          <div className="order-1 lg:order-2">
-            <AnimateIn>
-              <p className="text-orange text-sm font-semibold mb-3">How we work</p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-5 text-balance leading-tight">What happens from your first call to the guarantee.</h2>
-              <p className="text-white/50 text-[15px] leading-relaxed mb-10">Most waterproofing failures are not product failures. They are preparation failures. Our process is built around getting the substrate right before we apply anything.</p>
-            </AnimateIn>
-            <div className="space-y-0">
-              {PROCESS.map((step, i) => (
-                <AnimateIn key={step.step} delay={i * 75}>
-                  <div className="relative flex gap-5 pb-9 last:pb-0">
-                    {i < PROCESS.length - 1 && <div className="absolute left-[18px] top-10 bottom-0 w-px bg-white/[0.07]" aria-hidden="true" />}
-                    <div className="shrink-0 w-9 h-9 rounded-full border border-orange/35 bg-orange/10 flex items-center justify-center text-orange font-black text-sm z-10">{step.step}</div>
-                    <div className="pt-1">
-                      <h3 className="text-[16px] font-bold text-white mb-1.5">{step.title}</h3>
-                      <p className="text-white/50 text-[14px] leading-relaxed">{step.body}</p>
-                    </div>
-                  </div>
-                </AnimateIn>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

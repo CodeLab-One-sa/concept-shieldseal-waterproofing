@@ -1,32 +1,22 @@
 import type { Config } from "tailwindcss";
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}","./components/**/*.{js,ts,jsx,tsx,mdx}","./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        charcoal:  "#1A1D22",
-        surface:   "#22262D",
-        surface2:  "#2A2F38",
-        orange:    "#E06B1A",
-        "orange-light": "#F07828",
-        "orange-dark":  "#C45C10",
-        warm:      "#F0EDE6",
-        muted:     "#7A8296",
-        border:    "rgba(255,255,255,0.07)",
+        ink:     "#0E1012",
+        ink2:    "#171A1D",
+        ink3:    "#1F2428",
+        amber:   "#E07820",
+        "amber-light": "#F08830",
+        "amber-dark":  "#B85F10",
+        cream:   "#F4F0E8",
+        "cream-dark":  "#E8E2D6",
+        stone:   "#6B6558",
+        border:  "rgba(255,255,255,0.07)",
+        "border-cream": "rgba(0,0,0,0.10)",
       },
       fontFamily: { sans: ["var(--font-inter)", "system-ui", "sans-serif"] },
-      keyframes: {
-        "fade-up": { from: { opacity: "0", transform: "translateY(16px)" }, to: { opacity: "1", transform: "translateY(0)" } },
-        blink: { "0%,100%": { opacity: "1" }, "50%": { opacity: "0.3" } },
-      },
-      animation: {
-        "fade-up": "fade-up 0.5s ease-out both",
-        blink: "blink 2s ease-in-out infinite",
-      },
     },
   },
   plugins: [],

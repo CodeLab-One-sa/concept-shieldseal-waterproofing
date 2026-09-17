@@ -9,8 +9,23 @@ import Testimonials from "@/components/testimonials";
 import FAQ from "@/components/faq";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+
 export default function Home() {
   return (
-    <><Nav /><main><Hero /><Services /><QuoteCalculator /><RecentJobs /><Guarantee /><Process /><Testimonials /><FAQ /><Contact /></main><Footer /></>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Services />
+        <QuoteCalculator />
+        <RecentJobs />
+        <Guarantee />
+        <Process />
+        <Testimonials />
+        <FAQ />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }

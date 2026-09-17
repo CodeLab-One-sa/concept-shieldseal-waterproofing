@@ -1,45 +1,47 @@
-import { MapPin, CheckCircle } from "lucide-react";
 import AnimateIn from "./animate-in";
 import { RECENT_JOBS } from "@/lib/content";
 
 export default function RecentJobs() {
   return (
-    <section id="jobs" className="py-28 bg-charcoal">
+    // CREAM BACKGROUND — alternates with dark sections
+    <section id="jobs" className="py-24 bg-cream">
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
-        <AnimateIn className="mb-12">
-          <p className="text-orange text-sm font-semibold mb-3">Recent work</p>
-          <div className="flex flex-col lg:flex-row lg:items-end gap-6">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white text-balance leading-tight flex-1">Jobs completed<br />across Johannesburg.</h2>
-            <p className="text-white/45 text-[14px] max-w-xs lg:mb-1">A snapshot of recent jobs. References available on request from previous clients.</p>
+        <AnimateIn className="mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <p className="text-amber-dark text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Recent work</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-balance leading-tight on-cream">Completed jobs<br />across Johannesburg.</h2>
+            </div>
+            <p className="on-cream-muted text-[14px] max-w-xs md:mb-2">References and site photos available on request from any of these clients.</p>
           </div>
         </AnimateIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {RECENT_JOBS.map((job, i) => (
-            <AnimateIn key={i} delay={i * 55}>
-              <div className="bg-surface border border-white/[0.07] hover:border-orange/20 rounded-xl p-5 transition-all duration-200 hover:-translate-y-0.5">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-orange/70" />
-                    <span className="text-sm font-bold text-white">{job.area}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle className="w-3.5 h-3.5 text-green-400" />
-                    <span className="text-[11px] text-green-400 font-semibold">Completed</span>
-                  </div>
+        {/* TABLE layout — not cards */}
+        <AnimateIn delay={60}>
+          <div className="border border-border-cream rounded overflow-hidden">
+            <div className="hidden md:grid grid-cols-4 bg-cream-dark px-6 py-3 border-b border-border-cream">
+              {["Area", "Job type", "Size", "Month"].map(h => (
+                <span key={h} className="text-[11px] font-bold on-cream-muted tracking-widest uppercase">{h}</span>
+              ))}
+            </div>
+            {RECENT_JOBS.map((job, i) => (
+              <div key={i} className={`grid grid-cols-2 md:grid-cols-4 gap-y-1 px-6 py-5 border-b border-border-cream last:border-0 ${i % 2 === 0 ? "bg-white/60" : "bg-cream"} hover:bg-cream-dark transition-colors`}>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber shrink-0" />
+                  <span className="text-[14px] font-bold on-cream">{job.area}</span>
                 </div>
-                <p className="text-[14px] text-white/70 font-medium mb-3">{job.type}</p>
-                <div className="flex items-center justify-between text-[12px] text-muted">
-                  <span>{job.size}</span>
-                  <span>{job.month}</span>
+                <span className="text-[14px] on-cream-muted">{job.type}</span>
+                <span className="text-[14px] on-cream">{job.size}</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[14px] on-cream-muted">{job.month}</span>
+                  <span className="text-[11px] text-green-600 font-bold bg-green-50 border border-green-200 px-2 py-0.5 rounded-sm">Done</span>
                 </div>
               </div>
-            </AnimateIn>
-          ))}
-        </div>
-
-        <AnimateIn delay={100} className="mt-8 text-center">
-          <p className="text-white/35 text-sm">We complete 15 to 25 waterproofing jobs per month across Gauteng. References and site photos available on request.</p>
+            ))}
+          </div>
+        </AnimateIn>
+        <AnimateIn delay={80} className="mt-6 text-center">
+          <p className="on-cream-muted text-[13px]">15 to 25 jobs completed per month across Gauteng.</p>
         </AnimateIn>
       </div>
     </section>
