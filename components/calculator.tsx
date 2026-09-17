@@ -1,84 +1,94 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { QUOTE_SURFACES, COMPANY } from "@/lib/content";
 
 export default function QuoteCalculator() {
   const [surface, setSurface] = useState("");
-  const [area, setArea] = useState("");
-  const [result, setResult] = useState<{ low: number; high: number } | null>(null);
+  const [area, setArea]       = useState("");
+  const [result, setResult]   = useState<{ low: number; high: number; label: string } | null>(null);
 
   function calculate() {
     const s = QUOTE_SURFACES.find(x => x.id === surface);
     const a = parseFloat(area);
     if (!s || !a || a <= 0) return;
-    setResult({ low: Math.round(s.low * a / 100) * 100, high: Math.round(s.high * a / 100) * 100 });
+    setResult({ low: Math.round(s.low * a / 100) * 100, high: Math.round(s.high * a / 100) * 100, label: s.label });
   }
 
   const fmt = (n: number) => "R\u00a0" + n.toLocaleString("en-ZA");
 
   return (
-    <section id="calculator" className="py-24 bg-ink2">
-      <div className="max-w-7xl mx-auto px-5 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="calculator" className="py-24 bg-ink tech-grid">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <p className="label mb-4">Specification — Quote Estimator</p>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white text-balance leading-tight max-w-xl mb-14">
+          How much does it cost?<br />
+          <span className="text-cyan">Find out now.</span>
+        </h2>
 
-          <div className="lg:sticky lg:top-28">
-            <p className="text-amber text-[11px] font-bold tracking-[0.2em] uppercase mb-5">Instant price guide</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-6 text-balance leading-tight">How much does waterproofing cost?</h2>
-            <p className="text-white/50 text-[15px] leading-relaxed mb-6">Select your surface type, enter the area in square metres, and we give you a realistic Rand estimate. Your actual quote depends on the existing condition and access.</p>
-
-            {/* Per-m price table */}
-            <div className="border border-border rounded overflow-hidden">
-              <div className="bg-ink3 px-4 py-2.5 border-b border-border">
-                <p className="text-[11px] font-bold text-white/40 tracking-widest uppercase">Rate per square metre (supply and apply)</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Rate table */}
+          <div>
+            <p className="label-muted mb-4">System rate reference — per m² (excl. VAT)</p>
+            <div className="border border-border">
+              <div className="grid grid-cols-2 border-b border-border bg-ink2 px-4 py-2.5">
+                <span className="label-muted">System</span>
+                <span className="label-muted text-right">Rate / m²</span>
               </div>
-              {QUOTE_SURFACES.map(s => (
-                <div key={s.id} className="flex items-center justify-between px-4 py-3 border-b border-border/50 last:border-0 hover:bg-white/[0.02] transition-colors">
-                  <span className="text-[13px] text-white/65">{s.label}</span>
-                  <span className="text-[13px] font-bold text-white tabular-nums">R{s.low} - R{s.high}/m</span>
-                </div>
+              {QUOTE_SURFACES.map((s, i) => (
+                <button key={s.id} onClick={() => { setSurface(s.id); setResult(null); }}
+                  className={`w-full grid grid-cols-2 px-4 py-3.5 text-left ${i < QUOTE_SURFACES.length - 1 ? "border-b border-border" : ""} ${surface === s.id ? "bg-cyan/8" : "hover:bg-ink2"} transition-colors`}>
+                  <span className={`text-[13px] flex items-center gap-2 ${surface === s.id ? "text-cyan" : "text-white/60"}`}>
+                    {surface === s.id && <span className="w-1.5 h-1.5 bg-cyan rounded-full shrink-0" />}
+                    {s.label}
+                  </span>
+                  <span className="text-[12px] font-mono text-right tabular-nums" style={{ color: surface === s.id ? "#00B4C6" : "rgba(255,255,255,0.3)" }}>R{s.low} – R{s.high}</span>
+                </button>
               ))}
             </div>
-            <p className="text-[12px] text-white/25 mt-3">Excludes VAT. Planning guide only, not a formal quote.</p>
+            <p className="text-[11px] text-white/20 font-mono mt-3">Select a system above or use the dropdown below.</p>
           </div>
 
+          {/* Calculator form */}
           <div>
-            <div className="bg-ink border border-border rounded p-7 mb-5">
-              <h3 className="text-[16px] font-bold text-white mb-5">Calculate your estimate</h3>
-              <div className="space-y-4">
+            <p className="label-muted mb-4">Input your area</p>
+            <div className="border border-border p-7">
+              <div className="space-y-5">
                 <div>
-                  <label className="block text-[11px] text-white/40 mb-1.5 tracking-wide">Surface type</label>
+                  <label className="label-muted block mb-2">Waterproofing system</label>
                   <select value={surface} onChange={e => { setSurface(e.target.value); setResult(null); }}
-                    className="w-full bg-ink2 border border-border focus:border-amber/40 rounded px-3.5 py-3 text-[13px] text-white/70 focus:outline-none transition-colors appearance-none">
-                    <option value="">Select surface...</option>
+                    className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white/70 focus:outline-none font-mono transition-colors appearance-none">
+                    <option value="">-- Select system --</option>
                     {QUOTE_SURFACES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[11px] text-white/40 mb-1.5 tracking-wide">Area in square metres</label>
-                  <input type="number" min="1" placeholder="e.g. 120" value={area}
+                  <label className="label-muted block mb-2">Surface area in m²</label>
+                  <input type="number" min="1" placeholder="e.g. 150" value={area}
                     onChange={e => { setArea(e.target.value); setResult(null); }}
-                    className="w-full bg-ink2 border border-border focus:border-amber/40 rounded px-3.5 py-3 text-[13px] text-white placeholder-white/20 focus:outline-none transition-colors" />
+                    className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white placeholder-white/18 focus:outline-none font-mono transition-colors" />
                 </div>
                 <button onClick={calculate} disabled={!surface || !area}
-                  className="w-full flex items-center justify-center gap-2 bg-amber hover:bg-amber-light disabled:opacity-35 disabled:cursor-not-allowed text-white font-bold text-[14px] py-3.5 rounded transition-all duration-200 hover:-translate-y-px disabled:hover:translate-y-0">
-                  Calculate <ArrowRight className="w-4 h-4" />
+                  className="w-full bg-cyan hover:bg-cyan-l disabled:opacity-30 disabled:cursor-not-allowed text-ink font-black text-[12px] py-3.5 uppercase tracking-widest transition-all duration-200 hover:-translate-y-px">
+                  Calculate estimate
                 </button>
               </div>
-            </div>
 
-            {result && (
-              <div className="bg-amber p-7 rounded">
-                <p className="text-white/70 text-[11px] font-bold tracking-widest uppercase mb-3">Your price estimate</p>
-                <p className="text-5xl font-black text-white mb-1 tabular-nums leading-none">{fmt(result.low)}</p>
-                <p className="text-white/60 text-lg font-semibold mb-1">to {fmt(result.high)}</p>
-                <p className="text-white/50 text-[12px] mb-5">Excludes VAT. Based on supply and application only.</p>
-                <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white text-amber-dark font-bold text-[13px] px-5 py-3 rounded transition-all duration-200 hover:bg-white/90">
-                  Get an accurate quote via WhatsApp <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            )}
+              {result && (
+                <div className="mt-6 border-t border-border pt-6">
+                  <p className="label-muted mb-3">Output — {result.label}</p>
+                  <div className="mb-1">
+                    <span className="font-mono text-cyan font-bold tabular-nums" style={{ fontSize:"2.6rem", lineHeight:1 }}>{fmt(result.low)}</span>
+                    <span className="text-white/30 text-base font-mono mx-2">to</span>
+                    <span className="font-mono font-bold tabular-nums" style={{ fontSize:"1.8rem", lineHeight:1, color:"rgba(0,180,198,0.65)" }}>{fmt(result.high)}</span>
+                  </div>
+                  <p className="text-[11px] text-white/25 font-mono mb-4">Excludes VAT. Actual quote subject to site inspection and condition.</p>
+                  <div className="rule mb-4" />
+                  <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="label text-cyan hover:text-cyan-l transition-colors">
+                    Get a confirmed site quote via WhatsApp →
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

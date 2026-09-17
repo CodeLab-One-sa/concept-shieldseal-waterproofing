@@ -1,13 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root { --font-inter: 'Inter', system-ui, sans-serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: #0E1012; color: rgba(255,255,255,0.88); font-family: var(--font-inter); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #0E1012; }
-::-webkit-scrollbar-thumb { background: #1F2428; border-radius: 3px; }
-::selection { background: rgba(224,120,32,0.35); }
-.on-cream { color: #1A1612; }
-.on-cream-muted { color: #6B6558; }
+body {
+  background: #0A0A0A;
+  color: rgba(255,255,255,0.88);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #1A2030; }
+::selection { background: rgba(0,180,198,0.28); }
+
+/* Technical grid overlay — very subtle, section-level decoration */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(0,180,198,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,198,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Mono label — the signature typographic element */
+.label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00B4C6;
+}
+.label-muted {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5A6478;
+}
+
+/* Hairline rule */
+.rule { height: 1px; background: rgba(0,180,198,0.15); }
+.rule-strong { height: 1px; background: rgba(0,180,198,0.35); }
+
+/* Animate in */
+.ai-hidden { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.ai-visible { opacity: 1; transform: none; }

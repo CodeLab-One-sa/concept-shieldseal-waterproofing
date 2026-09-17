@@ -4,24 +4,30 @@ import { TESTIMONIALS } from "@/lib/content";
 
 export default function Testimonials() {
   return (
-    // CREAM background again — alternating pattern continues
-    <section className="py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-5 lg:px-8">
+    <section className="py-24 bg-ink2">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <AnimateIn className="mb-12">
-          <p className="text-amber-dark text-[11px] font-bold tracking-[0.2em] uppercase mb-3">What clients say</p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight on-cream text-balance leading-tight">Fixed properly.<br />No return visits.</h2>
+          <p className="label mb-4">Client Feedback</p>
+          <h2 className="text-4xl font-black tracking-tight text-white text-balance leading-tight">
+            Fixed. First time.<br /><span className="text-cyan">Every time.</span>
+          </h2>
         </AnimateIn>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border-cream border border-border-cream rounded overflow-hidden">
+        <div className="border border-border">
           {TESTIMONIALS.map((t, i) => (
-            <AnimateIn key={t.name} delay={i * 60}>
-              <div className="bg-cream hover:bg-white transition-colors duration-300 p-7 h-full flex flex-col">
-                <div className="flex gap-0.5 mb-5">{Array.from({ length: t.rating }).map((_, j) => <Star key={j} className="w-3.5 h-3.5 text-amber fill-amber" />)}</div>
-                <p className="text-[14px] on-cream-muted leading-relaxed flex-1 mb-6">&ldquo;{t.content}&rdquo;</p>
-                <div className="flex items-center gap-3 pt-5 border-t border-border-cream">
-                  <div className="w-9 h-9 rounded-sm bg-amber/15 border border-amber/25 flex items-center justify-center text-amber text-[11px] font-black shrink-0">{t.name.split(" ").map(n => n[0]).join("")}</div>
-                  <div>
-                    <p className="text-[13px] font-bold on-cream">{t.name}</p>
-                    <p className="text-[11px] on-cream-muted">{t.role}, {t.area}</p>
+            <AnimateIn key={t.name} delay={i * 65}>
+              <div className={`p-8 ${i < TESTIMONIALS.length - 1 ? "border-b border-border" : ""} hover:bg-ink3 transition-colors`}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  {/* Reviewer info */}
+                  <div className="lg:col-span-3">
+                    <div className="flex gap-0.5 mb-3">{Array.from({length:t.rating}).map((_,j) => <Star key={j} className="w-3 h-3 text-cyan fill-cyan" />)}</div>
+                    <p className="text-[14px] font-bold text-white">{t.name}</p>
+                    <p className="text-[12px] text-white/35 font-mono mt-0.5">{t.role}</p>
+                    <p className="label-muted mt-1">{t.area}, Gauteng</p>
+                  </div>
+                  {/* Quote */}
+                  <div className="lg:col-span-8 lg:col-start-5">
+                    <span className="text-cyan/20 text-5xl font-black leading-none select-none">&ldquo;</span>
+                    <p className="text-[15px] text-white/65 leading-relaxed -mt-3">{t.content}</p>
                   </div>
                 </div>
               </div>

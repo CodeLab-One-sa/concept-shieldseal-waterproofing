@@ -4,28 +4,35 @@ import { COMPANY } from "@/lib/content";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-ink">
-      <div className="max-w-7xl mx-auto px-5 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+    <section id="contact" className="py-24 bg-ink2">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <AnimateIn className="mb-14">
+          <p className="label mb-4">Contact — Book an inspection</p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white text-balance leading-tight max-w-xl">
+            One inspection.<br />
+            <span className="text-cyan">One written quote.</span><br />
+            No obligation.
+          </h2>
+        </AnimateIn>
 
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
           <AnimateIn className="lg:col-span-2">
-            <p className="text-amber text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Get in touch</p>
-            <h2 className="text-4xl font-black tracking-tight text-white mb-5 text-balance leading-tight">Book your free inspection today.</h2>
-            <p className="text-white/50 text-[14px] leading-relaxed mb-8">We visit the property, diagnose the problem, and send a written itemised quote. No call-out fee. No obligation.</p>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {[
-                { icon: <Phone className="w-4 h-4" />,         label: "Call us",          value: COMPANY.phone,          href: `tel:${COMPANY.phone.replace(/\s/g,"")}` },
-                { icon: <MessageCircle className="w-4 h-4" />, label: "WhatsApp",         value: "Send a message",        href: COMPANY.whatsapp },
-                { icon: <Mail className="w-4 h-4" />,          label: "Email",            value: COMPANY.email,           href: `mailto:${COMPANY.email}` },
-                { icon: <MapPin className="w-4 h-4" />,        label: "Office",           value: COMPANY.address,         href: null },
-                { icon: <Clock className="w-4 h-4" />,         label: "Hours",            value: "Mon to Sat, 7am to 5pm", href: null },
+                { icon: <Phone className="w-3.5 h-3.5" />,         label:"TELEPHONE",     value:COMPANY.phone,        href:`tel:${COMPANY.phone.replace(/\s/g,"")}` },
+                { icon: <MessageCircle className="w-3.5 h-3.5" />, label:"WHATSAPP",      value:"Send a message",      href:COMPANY.whatsapp },
+                { icon: <Mail className="w-3.5 h-3.5" />,          label:"EMAIL",         value:COMPANY.email,         href:`mailto:${COMPANY.email}` },
+                { icon: <MapPin className="w-3.5 h-3.5" />,        label:"OFFICE",        value:COMPANY.address,       href:null },
+                { icon: <Clock className="w-3.5 h-3.5" />,         label:"OPERATING HRS", value:"Mon–Sat 07:00–17:00", href:null },
               ].map(item => (
-                <div key={item.label} className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 bg-amber/10 border border-amber/20 rounded flex items-center justify-center text-amber shrink-0 mt-0.5">{item.icon}</div>
+                <div key={item.label} className="flex items-start gap-4 border-b border-border pb-5 last:border-0 last:pb-0">
+                  <div className="w-7 h-7 border border-border-s flex items-center justify-center text-cyan shrink-0 mt-0.5">{item.icon}</div>
                   <div>
-                    <p className="text-[11px] text-white/30 mb-0.5">{item.label}</p>
-                    {item.href ? <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-[14px] text-white/70 hover:text-white transition-colors">{item.value}</a>
-                    : <p className="text-[14px] text-white/70">{item.value}</p>}
+                    <p className="label-muted mb-0.5">{item.label}</p>
+                    {item.href
+                      ? <a href={item.href} target={item.href.startsWith("http")?"_blank":undefined} rel="noopener noreferrer" className="text-[13px] text-white/65 hover:text-white transition-colors font-mono">{item.value}</a>
+                      : <p className="text-[13px] text-white/65 font-mono">{item.value}</p>
+                    }
                   </div>
                 </div>
               ))}
@@ -33,28 +40,37 @@ export default function Contact() {
           </AnimateIn>
 
           <AnimateIn delay={60} className="lg:col-span-3">
-            <div className="border border-border rounded bg-ink2 p-7 lg:p-8">
-              <h3 className="text-[18px] font-bold text-white mb-1">Request a free inspection</h3>
-              <p className="text-white/35 text-[13px] mb-6">We confirm within 2 hours and arrange a convenient site visit.</p>
+            <div className="border border-border p-8">
+              <p className="label mb-6">Request — Free Inspection</p>
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
-                  {[{ l:"Name", p:"Your name" },{ l:"Phone", p:"082 000 0000" }].map(f => (
-                    <div key={f.l}><label className="block text-[11px] text-white/35 mb-1.5 tracking-wide">{f.l}</label><input type="text" placeholder={f.p} className="w-full bg-ink border border-border focus:border-amber/30 rounded px-3.5 py-3 text-[13px] text-white placeholder-white/18 focus:outline-none transition-colors" /></div>
+                <div className="grid grid-cols-2 gap-4">
+                  {[{l:"Name",p:"Your name"},{l:"Phone",p:"082 000 0000"}].map(f => (
+                    <div key={f.l}>
+                      <label className="label-muted block mb-2">{f.l}</label>
+                      <input type="text" placeholder={f.p} className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white placeholder-white/15 focus:outline-none font-mono transition-colors" />
+                    </div>
                   ))}
                 </div>
-                <div><label className="block text-[11px] text-white/35 mb-1.5 tracking-wide">Property address</label><input type="text" placeholder="12 Oak Street, Bedfordview" className="w-full bg-ink border border-border focus:border-amber/30 rounded px-3.5 py-3 text-[13px] text-white placeholder-white/18 focus:outline-none transition-colors" /></div>
-                <div><label className="block text-[11px] text-white/35 mb-1.5 tracking-wide">Problem type</label>
-                  <select className="w-full bg-ink border border-border focus:border-amber/30 rounded px-3.5 py-3 text-[13px] text-white/60 focus:outline-none transition-colors appearance-none">
-                    <option value="">Select...</option>
-                    {["Flat roof leaking","Rising damp","Basement flooding","Balcony leaking","Roof coating","Not sure, need inspection"].map(o => <option key={o}>{o}</option>)}
+                <div>
+                  <label className="label-muted block mb-2">Property address</label>
+                  <input type="text" placeholder="12 Oak Street, Bedfordview" className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white placeholder-white/15 focus:outline-none font-mono transition-colors" />
+                </div>
+                <div>
+                  <label className="label-muted block mb-2">Problem type</label>
+                  <select className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white/60 focus:outline-none font-mono transition-colors appearance-none">
+                    <option value="">-- Select --</option>
+                    {["Flat roof leaking","Rising damp","Basement flooding","Balcony leaking","Roof coating","Unsure — need diagnosis"].map(o=><option key={o}>{o}</option>)}
                   </select>
                 </div>
-                <div><label className="block text-[11px] text-white/35 mb-1.5 tracking-wide">Additional details (optional)</label><textarea rows={3} placeholder="Describe the problem and when it started..." className="w-full bg-ink border border-border focus:border-amber/30 rounded px-3.5 py-3 text-[13px] text-white placeholder-white/18 focus:outline-none transition-colors resize-none" /></div>
+                <div>
+                  <label className="label-muted block mb-2">Additional notes</label>
+                  <textarea rows={3} placeholder="When did the problem start? How severe?" className="w-full bg-ink border border-border focus:border-border-s px-4 py-3 text-[13px] text-white placeholder-white/15 focus:outline-none font-mono transition-colors resize-none" />
+                </div>
                 <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2.5 bg-amber hover:bg-amber-light text-white font-bold text-[14px] py-4 rounded transition-all duration-200 hover:-translate-y-px shadow-[0_4px_20px_rgba(224,120,32,0.25)]">
+                  className="w-full flex items-center justify-center gap-2.5 bg-cyan hover:bg-cyan-l text-ink font-black text-[12px] py-4 uppercase tracking-widest transition-all duration-200 hover:-translate-y-px shadow-[0_4px_24px_rgba(0,180,198,0.2)]">
                   <MessageCircle className="w-4 h-4" /> Send via WhatsApp
                 </a>
-                <p className="text-[11px] text-white/25 text-center">Or call {COMPANY.phone}. Mon to Sat, 7am to 5pm.</p>
+                <p className="label-muted text-center">Or call {COMPANY.phone}. Mon to Sat, 07:00 to 17:00.</p>
               </div>
             </div>
           </AnimateIn>

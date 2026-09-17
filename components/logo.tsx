@@ -1,33 +1,76 @@
-export function LogoMark({ size = 36, onLight = false, className = "" }: { size?: number; onLight?: boolean; className?: string }) {
-  const stroke = onLight ? "#B85F10" : "#E07820";
-  const fill   = onLight ? "rgba(224,120,32,0.15)" : "rgba(224,120,32,0.12)";
-  const inner  = onLight ? "rgba(224,120,32,0.25)" : "rgba(224,120,32,0.08)";
-  const wave   = onLight ? "#B85F10" : "white";
-  const drop   = onLight ? "#B85F10" : "white";
+"use client";
+import { useEffect, useRef } from "react";
+
+/* ─── The Dropshield mark ─────────────────────────────────────────────────
+   A water droplet whose pointed base becomes a shield point.
+   Inside: a wavy water-level line. Below it: water. Above: dry.
+   The water fill animates up on mount — core brand moment.
+─────────────────────────────────────────────────────────────────────────── */
+export function LogoMark({ size = 40, animate = false, className = "" }: { size?: number; animate?: boolean; className?: string }) {
+  const fillRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    if (!animate || !fillRef.current) return;
+    fillRef.current.style.clipPath = "inset(100% 0 0 0 round 50%)";
+    const id = setTimeout(() => {
+      if (fillRef.current) {
+        fillRef.current.style.transition = "clip-path 1.8s cubic-bezier(0.34,1.2,0.64,1)";
+        fillRef.current.style.clipPath = "inset(42% 0 0 0 round 50%)";
+      }
+    }, 300);
+    return () => clearTimeout(id);
+  }, [animate]);
+
   return (
-    <svg width={size} height={Math.round(size * 1.1)} viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
-      {/* Flat-top hexagon — quality seal */}
-      <path d="M22 2L40 12V28C40 38 31.5 46 22 48C12.5 46 4 38 4 28V12L22 2Z" fill={fill} stroke={stroke} strokeWidth="2" strokeLinejoin="round"/>
-      {/* Inner shield */}
-      <path d="M22 9L34 15.5V27C34 33.5 28.5 39.5 22 41C15.5 39.5 10 33.5 10 27V15.5L22 9Z" fill={inner} stroke={stroke} strokeWidth="1" strokeLinejoin="round" strokeOpacity="0.5"/>
-      {/* Water drop */}
-      <path d="M22 17 L24.5 23 Q24.5 26 22 26 Q19.5 26 19.5 23 Z" fill={drop} fillOpacity="0.85"/>
-      {/* Wave */}
-      <path d="M12 31 Q15 28.5 18 31 Q21 33.5 24.5 31 Q28 28.5 31 31" stroke={wave} strokeWidth="1.75" strokeLinecap="round" fill="none" strokeOpacity="0.8"/>
+    <svg width={size} height={Math.round(size * 1.3)} viewBox="0 0 56 72" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      {/* Outer shape — drop meets shield */}
+      <path
+        d="M28 3 C17 3 4 16 4 33 C4 52 14 65 28 69 C42 65 52 52 52 33 C52 16 39 3 28 3 Z"
+        fill="rgba(0,180,198,0.06)"
+        stroke="#00B4C6"
+        strokeWidth="1.5"
+      />
+      {/* Water fill — the animated element */}
+      <path
+        ref={fillRef}
+        d="M28 3 C17 3 4 16 4 33 C4 52 14 65 28 69 C42 65 52 52 52 33 C52 16 39 3 28 3 Z"
+        fill="#00B4C6"
+        fillOpacity="0.18"
+        style={animate ? { clipPath: "inset(100% 0 0 0 round 50%)" } : { clipPath: "inset(42% 0 0 0 round 50%)" }}
+      />
+      {/* Water level — wavy line, the signature mark element */}
+      <path
+        d="M9 32 Q16 27 23 32 Q30 37 37 32 Q44 27 49 30"
+        stroke="#00B4C6"
+        strokeWidth="2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Inner drop / dry zone indicator — a small elongated diamond */}
+      <path d="M28 11 L32 23 L28 28 L24 23 Z" fill="#00B4C6" fillOpacity="0.55" />
+      {/* Shield point accent at bottom */}
+      <path d="M23 62 L28 69 L33 62" stroke="#00B4C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   );
 }
 
-export default function Logo({ size = "md", onLight = false, className = "" }: { size?: "sm"|"md"|"lg"; onLight?: boolean; className?: string }) {
-  const s = { sm: { mark: 28, name: 12, tag: 9, gap: 8 }, md: { mark: 36, name: 14, tag: 10, gap: 10 }, lg: { mark: 50, name: 19, tag: 12, gap: 13 } }[size];
-  const nameCol = onLight ? "#1A1612" : "white";
-  const tagCol  = onLight ? "#6B6558" : "#7A8296";
+export default function Logo({ size = "md", animate = false, className = "" }: { size?: "sm"|"md"|"lg"|"xl"; animate?: boolean; className?: string }) {
+  const s = {
+    sm: { mark: 28, shield: 11, seal: 15, tag: 8.5, gap: 9 },
+    md: { mark: 38, shield: 14, seal: 20, tag: 10,  gap: 11 },
+    lg: { mark: 52, shield: 18, seal: 26, tag: 12,  gap: 14 },
+    xl: { mark: 80, shield: 26, seal: 38, tag: 16,  gap: 18 },
+  }[size];
+
   return (
     <div className={`flex items-center ${className}`} style={{ gap: s.gap }}>
-      <LogoMark size={s.mark} onLight={onLight} />
+      <LogoMark size={s.mark} animate={animate} />
       <div className="flex flex-col leading-none">
-        <span className="font-black tracking-[0.07em]" style={{ fontSize: s.name, color: nameCol }}>SHIELDSEAL</span>
-        <span className="font-medium tracking-[0.17em]" style={{ fontSize: s.tag, color: tagCol, marginTop: 2 }}>WATERPROOFING</span>
+        <div style={{ display:"flex", alignItems:"baseline", gap: 1 }}>
+          <span className="font-black text-white tracking-tight" style={{ fontSize: s.shield, letterSpacing:"-0.01em" }}>SHIELD</span>
+          <span className="font-black tracking-tight" style={{ fontSize: s.seal, color:"#00B4C6", letterSpacing:"-0.01em" }}>SEAL</span>
+        </div>
+        <span className="label" style={{ marginTop: 3, color:"#5A6478" }}>Waterproofing</span>
       </div>
     </div>
   );

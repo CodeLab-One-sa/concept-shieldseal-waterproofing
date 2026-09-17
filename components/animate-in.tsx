@@ -5,14 +5,10 @@ export default function AnimateIn({ children, className = "", delay = 0 }: { chi
   useEffect(() => {
     const el = ref.current; if (!el) return;
     const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setTimeout(() => el.classList.add("ai-v"), delay); obs.unobserve(el); }
+      if (e.isIntersecting) { setTimeout(() => el.classList.add("ai-visible"), delay); obs.unobserve(el); }
     }, { threshold: 0.08, rootMargin: "0px 0px -32px 0px" });
+    el.classList.add("ai-hidden");
     obs.observe(el); return () => obs.disconnect();
   }, [delay]);
-  return (
-    <div ref={ref} className={className} style={{ opacity: 0, transform: "translateY(14px)", transition: "opacity 0.5s ease-out, transform 0.5s ease-out" }}>
-      <style>{`.ai-v { opacity: 1 !important; transform: none !important; }`}</style>
-      {children}
-    </div>
-  );
+  return <div ref={ref} className={className}>{children}</div>;
 }
