@@ -18,7 +18,7 @@ export default function Testimonials() {
             </div>
             <div className="flex flex-col lg:items-end gap-2">
               <div className="flex gap-1">{[...Array(5)].map((_,i) => <Star key={i} className="w-5 h-5 text-teal fill-teal" />)}</div>
-              <p className="text-muted text-[13px] font-mono">Average rating — all clients</p>
+              <p className="text-muted text-[13px] font-mono">Average rating, all clients</p>
             </div>
           </div>
         </AnimateIn>
@@ -36,7 +36,7 @@ export default function Testimonials() {
                   </div>
                   <div className="lg:col-span-9 px-7 py-8 relative">
                     <span className="absolute top-4 right-5 text-teal/10 font-display font-black select-none" style={{ fontSize:"5rem", lineHeight:1 }} aria-hidden="true">&rdquo;</span>
-                    <p className="text-[15px] text-ink-mid leading-relaxed pr-8">&ldquo;{t.content}&rdquo;</p>
+                    <p className="text-[15px] font-medium text-ink-mid leading-relaxed pr-8">&ldquo;{t.content}&rdquo;</p>
                   </div>
                 </div>
               </div>

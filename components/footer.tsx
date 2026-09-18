@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
           <div className="md:col-span-5">
-            {/* Logo on dark — needs the original with white SHIELD, or we use the mark */}
+            {/* Logo on dark: needs the original with white SHIELD, or we use the mark */}
             <Logo height={38} className="mb-6 brightness-0 invert" />
-            <p className="text-[13px] font-mono text-white/62 leading-relaxed max-w-[300px] mb-5">
+            <p className="text-[14px] font-mono text-white/62 leading-relaxed max-w-[300px] mb-5">
               NHBRC-registered waterproofing specialists. Johannesburg and Gauteng. 10-year written guarantee on every major application.
             </p>
             <p className="label-dim-on-dark mb-1">{COMPANY.nhbrc}</p>

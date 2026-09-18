@@ -19,19 +19,19 @@ export default function Services() {
               </h2>
             </div>
             <div className="lg:col-span-5">
-              {/* Contained image — roofing work */}
-              <div className="relative h-[190px] overflow-hidden border border-line">
-                <Image src="/images/roof-repair.jpg" alt="Waterproofing work in progress"
-                  fill className="object-cover" quality={80} />
-                <div className="absolute inset-0 bg-ink/20" />
+              {/* Contained image: roofing work */}
+              <div className="relative h-[220px] overflow-hidden border border-line">
+                <Image src="/images/services-torch-on.jpg" alt="Torch-on bitumen membrane waterproofing application"
+                  fill className="object-cover object-center" quality={85} />
+                <div className="absolute inset-0 bg-ink/30" />
                 <div className="absolute bottom-3 left-4">
-                  <p className="label" style={{ color:"rgba(255,255,255,0.70)" }}>Work in progress</p>
+                  <p className="label" style={{ color:"rgba(255,255,255,0.75)" }}>Torch-on membrane application</p>
                 </div>
               </div>
             </div>
           </div>
-          <p className="text-ink-mid text-[15px] leading-relaxed mt-7 max-w-2xl">
-            Each job starts with a diagnosis. We match the system to your specific substrate, exposure, and problem — not to what is fastest to apply.
+          <p className="text-ink-mid text-[15px] font-medium leading-relaxed mt-7 max-w-2xl">
+            Each job starts with a diagnosis. We match the system to your specific substrate, exposure, and problem, not what is fastest to apply.
           </p>
         </AnimateIn>
 
@@ -47,13 +47,13 @@ export default function Services() {
                     style={{ fontSize: "1.2rem" }}>
                     {svc.title}
                   </h3>
-                  <p className="text-[13px] text-ink-mid leading-relaxed">{svc.description}</p>
+                  <p className="text-[13px] text-ink-mid font-medium leading-relaxed">{svc.description}</p>
                 </div>
                 <div className="lg:col-span-5 px-6 py-7">
                   <p className="label-dim mb-4">Scope of work</p>
                   <ul className="space-y-2.5">
                     {svc.features.map(f => (
-                      <li key={f} className="flex items-center gap-3 text-[12px] text-ink-mid">
+                      <li key={f} className="flex items-center gap-3 text-[12px] font-medium text-ink-mid">
                         <span className="w-[5px] h-[1.5px] bg-teal/50 shrink-0" />
                         {f}
                       </li>

@@ -21,7 +21,7 @@ body {
 ::selection { background: rgba(0,170,194,0.20); }
 
 /* ── Mono labels ────────────────────────────────────────────────────── */
-/* On light backgrounds — #6B7280 = 4.6:1 on white ✓ */
+/* On light backgrounds: #6B7280 = 4.6:1 on white ✓ */
 .label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -36,9 +36,9 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #6B7280; /* was #9CA3AF — only 2.7:1 on white, fails AA */
+  color: #6B7280; /* was #9CA3AF: only 2.7:1 on white, fails AA */
 }
-/* On dark backgrounds — white/58 ≈ 5.2:1 on #0C0E12 ✓ */
+/* On dark backgrounds: white/58 ≈ 5.2:1 on #0C0E12 ✓ */
 .label-on-dark {
   font-family: 'Courier New', monospace;
   font-size: 10px;

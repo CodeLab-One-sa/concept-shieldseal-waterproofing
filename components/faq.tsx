@@ -41,7 +41,7 @@ export default function FAQ() {
                   <div className="border-t border-line bg-canvas-s">
                     <div className="px-6 py-6 grid grid-cols-12">
                       <div className="col-span-1 hidden md:block" />
-                      <p className="col-span-12 md:col-span-10 text-[14px] text-ink-mid leading-relaxed">{faq.a}</p>
+                      <p className="col-span-12 md:col-span-10 text-[14px] font-medium text-ink-mid leading-relaxed">{faq.a}</p>
                     </div>
                   </div>
                 )}

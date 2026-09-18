@@ -16,7 +16,7 @@ export default function Process() {
               From first call to<br />
               <span className="text-teal">10-year guarantee.</span>
             </h2>
-            <p className="text-ink-mid text-[15px] leading-relaxed self-end">
+            <p className="text-ink-mid text-[15px] font-medium leading-relaxed self-end">
               Most waterproofing failures happen during preparation, not application. Our process starts with an accurate diagnosis before anything is applied.
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function Process() {
                       style={{ fontSize: "1.2rem" }}>
                       {step.title}
                     </h3>
-                    <p className="text-[13px] text-ink-mid leading-relaxed">{step.body}</p>
+                    <p className="text-[13px] text-ink-mid font-medium leading-relaxed">{step.body}</p>
                   </div>
                 </div>
               </AnimateIn>
@@ -50,7 +50,7 @@ export default function Process() {
           {/* Right: image + spec card */}
           <AnimateIn delay={80} className="lg:sticky lg:top-28">
             <div className="border border-line">
-              {/* Image — contained */}
+              {/* Image: contained */}
               <div className="relative h-[240px] border-b border-line overflow-hidden">
                 <Image src="/images/process-inspect.jpg" alt="Site inspection in progress"
                   fill className="object-cover" quality={82} />
@@ -63,7 +63,7 @@ export default function Process() {
               {/* Spec card */}
               <div className="bg-canvas-s px-6 py-5 border-b border-line">
                 <div className="flex items-center justify-between mb-4">
-                  <p className="label">ShieldSeal — Inspection form</p>
+                  <p className="label">ShieldSeal: Inspection form</p>
                   <LogoMark size={22} />
                 </div>
                 {[

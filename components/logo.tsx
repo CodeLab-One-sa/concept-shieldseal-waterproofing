@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// logo-tight.png: 1058×288px (3.674:1) — full logo, transparent bg
-// logo-mark.png:  229×288px  (0.795:1) — shield mark only, transparent bg
+// logo-tight.png: 1058×288px (3.674:1) : full logo, transparent bg
+// logo-mark.png:  229×288px  (0.795:1) : shield mark only, transparent bg
 
 export default function Logo({ height = 38, className = "" }: { height?: number; className?: string }) {
   return (

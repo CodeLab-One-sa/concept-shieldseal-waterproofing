@@ -28,7 +28,7 @@ export default function QuoteCalculator() {
               What will it cost?<br />
               <span className="text-teal">Find out now.</span>
             </h2>
-            <p className="text-ink-mid text-[15px] leading-relaxed self-end">
+            <p className="text-ink-mid text-[15px] font-medium leading-relaxed self-end">
               Select a system and enter your area. Estimate based on current market rates. Your written quote confirms the exact figure after a site inspection.
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function QuoteCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Rate table */}
           <div>
-            <p className="label-dim mb-4">Rate reference — per m² (supply and apply, excl. VAT)</p>
+            <p className="label-dim mb-4">Rate reference, per m² (supply and apply, excl. VAT)</p>
             <div className="border border-line">
               <div className="grid grid-cols-12 bg-canvas-s px-5 py-3 border-b border-line">
                 <span className="label-dim col-span-7">System</span>
@@ -51,7 +51,7 @@ export default function QuoteCalculator() {
                     {s.label}
                   </span>
                   <span className={`col-span-5 text-[12px] font-mono text-right tabular-nums ${surface === s.id ? "text-teal" : "text-muted"}`}>
-                    R{s.low} – R{s.high}
+                    R{s.low} to R{s.high}
                   </span>
                 </button>
               ))}
@@ -86,7 +86,7 @@ export default function QuoteCalculator() {
 
               {result ? (
                 <div className="border-t border-line pt-7">
-                  <p className="label-dim mb-4">Estimate — {result.label}</p>
+                  <p className="label-dim mb-4">Estimate: {result.label}</p>
                   <p className="font-mono font-bold text-teal tabular-nums mb-2" style={{ fontSize: "3rem", lineHeight: 1 }}>{fmt(result.low)}</p>
                   <div className="flex items-center gap-3 my-3">
                     <div className="flex-1 rule" /><span className="text-muted text-[11px] font-mono uppercase">to</span><div className="flex-1 rule" />

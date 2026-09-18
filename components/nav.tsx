@@ -33,7 +33,7 @@ export default function Nav() {
         <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
           {links.map(l => (
             <a key={l.href} href={l.href}
-              className="px-4 py-2 text-[12px] font-mono text-ink-mid hover:text-teal tracking-widest uppercase transition-colors">
+              className="px-4 py-2 text-[12px] font-mono font-semibold text-ink-mid hover:text-teal tracking-widest uppercase transition-colors">
               {l.label}
             </a>
           ))}
@@ -41,7 +41,7 @@ export default function Nav() {
 
         <div className="hidden lg:flex items-center gap-4">
           <a href={`tel:${COMPANY.phone.replace(/\s/g,"")}`}
-            className="flex items-center gap-1.5 text-[12px] font-mono text-muted hover:text-teal transition-colors">
+            className="flex items-center gap-1.5 text-[12px] font-mono font-semibold text-muted hover:text-teal transition-colors">
             <Phone className="w-3 h-3" />{COMPANY.phone}
           </a>
           <a href="#contact"
@@ -59,7 +59,7 @@ export default function Nav() {
         <div className="lg:hidden bg-canvas border-t border-line px-6 py-5 flex flex-col gap-0.5">
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="py-3.5 text-[12px] font-mono text-ink-mid hover:text-teal tracking-widest uppercase border-b border-line last:border-0 transition-colors">
+              className="py-3.5 text-[12px] font-mono font-semibold text-ink-mid hover:text-teal tracking-widest uppercase border-b border-line last:border-0 transition-colors">
               {l.label}
             </a>
           ))}

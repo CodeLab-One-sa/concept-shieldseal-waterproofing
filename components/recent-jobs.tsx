@@ -6,13 +6,13 @@ export default function RecentJobs() {
     <section id="jobs" className="py-24 bg-canvas-s">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <AnimateIn className="mb-12">
-          <p className="label mb-4">Completed Projects — 2025 / 2026</p>
+          <p className="label mb-4">Completed Projects: 2025 and 2026</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             <h2 className="font-display font-black text-ink text-balance leading-none"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 4.5rem)", letterSpacing: "-0.02em" }}>
               Recent jobs<br />across Gauteng.
             </h2>
-            <p className="text-ink-mid text-[15px] leading-relaxed self-end">
+            <p className="text-ink-mid text-[15px] font-medium leading-relaxed self-end">
               References and site photography available on request. 15 to 25 projects completed monthly.
             </p>
           </div>
@@ -32,10 +32,10 @@ export default function RecentJobs() {
                   <span className="w-1.5 h-1.5 bg-teal/50 group-hover:bg-teal rounded-full shrink-0 transition-colors" />
                   <span className="text-[14px] font-bold text-ink">{job.area}</span>
                 </div>
-                <span className="md:col-span-4 text-[13px] text-ink-mid md:pl-0 pl-5">{job.type}</span>
+                <span className="md:col-span-4 text-[13px] font-medium text-ink-mid md:pl-0 pl-5">{job.type}</span>
                 <span className="md:col-span-3 text-[13px] font-mono text-muted md:pl-0 pl-5">{job.size}</span>
                 <div className="md:col-span-2 flex items-center md:justify-end gap-3 md:pl-0 pl-5">
-                  <span className="text-[11px] font-mono text-muted">{job.month}</span>
+                  <span className="text-[11px] font-semibold font-mono text-muted">{job.month}</span>
                   <span className="label hidden md:inline">Done</span>
                 </div>
               </div>

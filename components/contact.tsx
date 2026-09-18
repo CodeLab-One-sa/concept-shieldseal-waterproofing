@@ -9,7 +9,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-5">
 
-          {/* Info panel — dark with subtle image */}
+          {/* Info panel: dark with subtle image */}
           <div className="lg:col-span-2 relative overflow-hidden min-h-[420px] lg:min-h-0">
             <Image src="/images/waterproofing-work.jpg" alt=""
               fill className="object-cover object-center" quality={75} aria-hidden="true" />
@@ -31,7 +31,7 @@ export default function Contact() {
                   { icon: <MessageCircle className="w-3.5 h-3.5" />, label:"WhatsApp",        value:"Send a message",         href:COMPANY.whatsapp },
                   { icon: <Mail className="w-3.5 h-3.5" />,          label:"Email",           value:COMPANY.email,            href:`mailto:${COMPANY.email}` },
                   { icon: <MapPin className="w-3.5 h-3.5" />,        label:"Office",          value:"Germiston, Johannesburg", href:null },
-                  { icon: <Clock className="w-3.5 h-3.5" />,         label:"Operating hours", value:"Mon–Sat 07:00–17:00",    href:null },
+                  { icon: <Clock className="w-3.5 h-3.5" />,         label:"Operating hours", value:"Mon to Sat, 07:00 to 17:00",    href:null },
                 ].map(item => (
                   <div key={item.label} className="flex items-start gap-4 border-b pb-5 last:border-0 last:pb-0" style={{ borderColor:"rgba(255,255,255,0.08)" }}>
                     <div className="w-8 h-8 border flex items-center justify-center text-teal shrink-0 mt-0.5" style={{ borderColor:"rgba(0,170,194,0.30)" }}>{item.icon}</div>
@@ -77,7 +77,7 @@ export default function Contact() {
                 <select className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white/65 focus:outline-none font-mono transition-colors appearance-none cursor-pointer focus:border-teal"
                   style={{ borderColor:"rgba(255,255,255,0.12)" }}>
                   <option value="">-- Select --</option>
-                  {["Flat roof leaking","Rising damp","Basement flooding","Balcony leaking","Roof coating","Unsure — need diagnosis"].map(o=><option key={o}>{o}</option>)}
+                  {["Flat roof leaking","Rising damp","Basement flooding","Balcony leaking","Roof coating","Unsure, need diagnosis"].map(o=><option key={o}>{o}</option>)}
                 </select>
               </div>
               <div>
