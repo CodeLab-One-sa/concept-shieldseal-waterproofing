@@ -79,7 +79,7 @@ export default function QuoteCalculator() {
                     className="w-full bg-canvas-s border border-line focus:border-teal px-4 py-3.5 text-[13px] text-ink placeholder-muted focus:outline-none font-mono transition-colors" />
                 </div>
                 <button onClick={calculate} disabled={!surface || !area}
-                  className="w-full bg-teal hover:bg-teal-l disabled:opacity-30 disabled:cursor-not-allowed text-white font-display font-black text-[13px] py-4 uppercase tracking-wide transition-all duration-200 hover:-translate-y-px">
+                  className="w-full bg-teal hover:bg-teal-l disabled:bg-line-d disabled:text-muted disabled:cursor-not-allowed text-white font-display font-black text-[13px] py-4 uppercase tracking-wide transition-all duration-200 hover:-translate-y-px disabled:hover:translate-y-0">
                   Calculate estimate
                 </button>
               </div>
