@@ -29,7 +29,7 @@ export default function Hero() {
 
           <div className="flex items-center gap-3 mb-8">
             <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
-            <p className="font-mono text-[11px] font-semibold tracking-[0.20em] uppercase text-white/68">
+            <p className="font-mono text-[11px] font-semibold tracking-[0.20em] uppercase text-white/88">
               Johannesburg · NHBRC Registered · Est. 2011
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function Hero() {
             <span className="text-teal">Guaranteed.</span>
           </h1>
 
-          <p className="text-white/75 text-[17px] font-medium leading-relaxed max-w-[500px] mb-12">
+          <p className="text-white/85 text-[17px] font-medium leading-relaxed max-w-[500px] mb-12">
             NHBRC-registered waterproofing contractors since 2011. Flat roofs, rising damp, basements, and balconies. We find the source. We fix it. We back it with a 10-year written guarantee.
           </p>
 
@@ -56,7 +56,7 @@ export default function Hero() {
                   <p className="font-mono font-bold text-teal leading-none mb-2.5 tabular-nums" style={{ fontSize: "2.1rem" }}>
                     {s.value}<span style={{ fontSize: "1.2rem" }}>{s.unit}</span>
                   </p>
-                  <p className="font-mono text-[10px] font-semibold tracking-[0.18em] uppercase text-white/65 leading-snug">
+                  <p className="font-mono text-[10px] font-semibold tracking-[0.18em] uppercase text-white/82 leading-snug">
                     {s.label}
                   </p>
                 </div>
@@ -73,13 +73,13 @@ export default function Hero() {
             </a>
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 border border-white/40 hover:border-white/70 text-white/72 hover:text-white font-mono text-[12px] font-semibold px-8 py-4 uppercase tracking-widest transition-all duration-200 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 border border-white/50 hover:border-white/80 text-white/82 hover:text-white font-mono text-[12px] font-semibold px-8 py-4 uppercase tracking-widest transition-all duration-200 backdrop-blur-sm"
             >
               Get a price estimate
             </a>
             <a
               href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
-              className="text-white/62 hover:text-white font-mono text-[12px] font-semibold uppercase tracking-widest transition-colors px-4 py-4"
+              className="text-white/78 hover:text-white font-mono text-[12px] font-semibold uppercase tracking-widest transition-colors px-4 py-4"
             >
               {COMPANY.phone}
             </a>
@@ -88,7 +88,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-3 border border-white/30 backdrop-blur-sm bg-white/[0.06] px-5 py-2.5">
             <span className="label">{COMPANY.nhbrc}</span>
             <div className="w-px h-3 bg-white/40" />
-            <span className="font-mono text-[10px] font-semibold tracking-[0.18em] uppercase text-white/62">CETA Accredited</span>
+            <span className="font-mono text-[10px] font-semibold tracking-[0.18em] uppercase text-white/78">CETA Accredited</span>
           </div>
 
         </div>
