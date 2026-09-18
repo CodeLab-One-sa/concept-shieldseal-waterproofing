@@ -12,9 +12,9 @@ export const COMPANY = {
 };
 
 export const STATS = [
-  { value: "14",    unit: "yr",  label: "Waterproofing in Johannesburg" },
+  { value: "14",    unit: "yr",  label: "Years in Johannesburg" },
   { value: "2 400+", unit: "",  label: "Jobs completed" },
-  { value: "10 yr", unit: "",   label: "Workmanship guarantee" },
+  { value: "10 yr", unit: "",   label: "Guarantee" },
   { value: "100%",  unit: "",   label: "NHBRC compliant" },
 ];
 
