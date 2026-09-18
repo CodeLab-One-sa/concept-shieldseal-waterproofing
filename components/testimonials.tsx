@@ -31,7 +31,7 @@ export default function Testimonials() {
                   <div className="lg:col-span-3 px-7 py-8 border-b lg:border-b-0 lg:border-r border-line">
                     <div className="flex gap-0.5 mb-4">{Array.from({length:t.rating}).map((_,j) => <Star key={j} className="w-3.5 h-3.5 text-teal fill-teal" />)}</div>
                     <p className="font-display font-bold text-ink mb-1" style={{ fontSize:"1.05rem" }}>{t.name}</p>
-                    <p className="text-[12px] text-muted font-mono mb-1">{t.role}</p>
+                    <p className="text-[12px] text-ink-mid font-mono mb-1">{t.role}</p>
                     <p className="label">{t.area}, Gauteng</p>
                   </div>
                   <div className="lg:col-span-9 px-7 py-8 relative">

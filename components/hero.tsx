@@ -35,7 +35,7 @@ export default function Hero() {
           {/* Location / registration line */}
           <div className="flex items-center gap-3 mb-8">
             <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
-            <p className="font-mono text-[10px] font-bold tracking-[0.22em] uppercase text-white/55">
+            <p className="font-mono text-[10px] font-bold tracking-[0.22em] uppercase text-white/68">
               Johannesburg · NHBRC Registered · Est. 2011
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function Hero() {
                   <p className="font-mono font-bold text-teal leading-none mb-2.5 tabular-nums" style={{ fontSize: "2.1rem" }}>
                     {s.value}<span style={{ fontSize: "1.2rem" }}>{s.unit}</span>
                   </p>
-                  <p className="font-mono text-[10px] font-600 tracking-[0.18em] uppercase text-white/48 leading-snug">
+                  <p className="font-mono text-[10px] font-600 tracking-[0.18em] uppercase text-white/65 leading-snug">
                     {s.label}
                   </p>
                 </div>
@@ -82,23 +82,23 @@ export default function Hero() {
             </a>
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 border border-white/30 hover:border-white/60 text-white/65 hover:text-white font-mono text-[11px] px-8 py-4 uppercase tracking-widest transition-all duration-200 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 border border-white/40 hover:border-white/70 text-white/72 hover:text-white font-mono text-[11px] px-8 py-4 uppercase tracking-widest transition-all duration-200 backdrop-blur-sm"
             >
               Get a price estimate
             </a>
             <a
               href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
-              className="text-white/50 hover:text-white font-mono text-[12px] uppercase tracking-widest transition-colors px-4 py-4"
+              className="text-white/62 hover:text-white font-mono text-[12px] uppercase tracking-widest transition-colors px-4 py-4"
             >
               {COMPANY.phone}
             </a>
           </div>
 
           {/* NHBRC badge */}
-          <div className="inline-flex items-center gap-3 border border-white/20 backdrop-blur-sm bg-white/[0.04] px-5 py-2.5">
+          <div className="inline-flex items-center gap-3 border border-white/30 backdrop-blur-sm bg-white/[0.06] px-5 py-2.5">
             <span className="label">{COMPANY.nhbrc}</span>
-            <div className="w-px h-3 bg-white/25" />
-            <span className="font-mono text-[10px] font-600 tracking-[0.18em] uppercase text-white/45">CETA Accredited</span>
+            <div className="w-px h-3 bg-white/40" />
+            <span className="font-mono text-[10px] font-600 tracking-[0.18em] uppercase text-white/62">CETA Accredited</span>
           </div>
 
         </div>

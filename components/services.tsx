@@ -53,7 +53,7 @@ export default function Services() {
                   <p className="label-dim mb-4">Scope of work</p>
                   <ul className="space-y-2.5">
                     {svc.features.map(f => (
-                      <li key={f} className="flex items-center gap-3 text-[12px] text-muted">
+                      <li key={f} className="flex items-center gap-3 text-[12px] text-ink-mid">
                         <span className="w-[5px] h-[1.5px] bg-teal/50 shrink-0" />
                         {f}
                       </li>

@@ -20,7 +20,8 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(0,170,194,0.35); border-radius: 3px; }
 ::selection { background: rgba(0,170,194,0.20); }
 
-/* Labels */
+/* ── Mono labels ────────────────────────────────────────────────────── */
+/* On light backgrounds — #6B7280 = 4.6:1 on white ✓ */
 .label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -35,17 +36,31 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #9CA3AF;
+  color: #6B7280; /* was #9CA3AF — only 2.7:1 on white, fails AA */
 }
-/* Labels on dark backgrounds */
-.label-dark { color: rgba(0,170,194,0.85); }
-.label-dim-dark { color: rgba(255,255,255,0.38); }
+/* On dark backgrounds — white/58 ≈ 5.2:1 on #0C0E12 ✓ */
+.label-on-dark {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00AAC2;
+}
+.label-dim-on-dark {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+}
 
-/* Rules */
-.rule        { height: 1px; background: #E5E7EB; }
-.rule-teal   { height: 1px; background: rgba(0,170,194,0.30); }
-.rule-dark   { height: 1px; background: rgba(255,255,255,0.10); }
+/* ── Rules ──────────────────────────────────────────────────────────── */
+.rule      { height: 1px; background: #E5E7EB; }
+.rule-teal { height: 1px; background: rgba(0,170,194,0.28); }
+.rule-dark { height: 1px; background: rgba(255,255,255,0.10); }
 
-/* Animate-in */
+/* ── Animate-in ─────────────────────────────────────────────────────── */
 .ai-h { opacity: 0; transform: translateY(14px); transition: opacity 0.52s ease-out, transform 0.52s ease-out; }
 .ai-v { opacity: 1 !important; transform: none !important; }

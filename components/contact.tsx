@@ -17,7 +17,7 @@ export default function Contact() {
 
             <div className="relative z-10 px-8 py-14 lg:py-16 flex flex-col h-full">
               <div className="mb-10">
-                <p className="label-dark label mb-5">Contact</p>
+                <p className="label-on-dark mb-5">Contact</p>
                 <h2 className="font-display font-black text-white text-balance leading-tight"
                   style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}>
                   Book your free<br />
@@ -47,7 +47,7 @@ export default function Contact() {
               </div>
 
               <div className="mt-10 pt-8" style={{ borderTop:"1px solid rgba(255,255,255,0.08)" }}>
-                <p className="label-dim mb-1">{COMPANY.nhbrc}</p>
+                <p className="label-dim-on-dark mb-1">{COMPANY.nhbrc}</p>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function Contact() {
                   <div key={f.l}>
                     <label className="label-dim block mb-2.5">{f.l}</label>
                     <input type="text" placeholder={f.p}
-                      className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/25 focus:outline-none font-mono transition-colors focus:border-teal"
+                      className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/40 focus:outline-none font-mono transition-colors focus:border-teal"
                       style={{ borderColor:"rgba(255,255,255,0.12)" }} />
                   </div>
                 ))}
@@ -69,7 +69,7 @@ export default function Contact() {
               <div>
                 <label className="label-dim block mb-2.5">Property address</label>
                 <input type="text" placeholder="12 Oak Street, Bedfordview"
-                  className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/25 focus:outline-none font-mono transition-colors focus:border-teal"
+                  className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/40 focus:outline-none font-mono transition-colors focus:border-teal"
                   style={{ borderColor:"rgba(255,255,255,0.12)" }} />
               </div>
               <div>
@@ -83,14 +83,14 @@ export default function Contact() {
               <div>
                 <label className="label-dim block mb-2.5">Additional notes</label>
                 <textarea rows={4} placeholder="When did it start? How bad is it? Previous repairs?"
-                  className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/25 focus:outline-none font-mono transition-colors resize-none focus:border-teal"
+                  className="w-full bg-dark-s border px-4 py-3.5 text-[13px] text-white placeholder-white/40 focus:outline-none font-mono transition-colors resize-none focus:border-teal"
                   style={{ borderColor:"rgba(255,255,255,0.12)" }} />
               </div>
               <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-3 bg-teal hover:bg-teal-l text-white font-display font-black text-[13px] py-4 uppercase tracking-wide transition-all duration-200 hover:-translate-y-px shadow-[0_4px_20px_rgba(0,170,194,0.22)]">
                 <MessageCircle className="w-4 h-4" />Send via WhatsApp
               </a>
-              <p className="label-dim text-center">Or call {COMPANY.phone} · Mon to Sat, 07:00 to 17:00</p>
+              <p className="label-dim-on-dark text-center">Or call {COMPANY.phone} · Mon to Sat, 07:00 to 17:00</p>
             </div>
           </AnimateIn>
         </div>

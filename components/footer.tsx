@@ -9,20 +9,20 @@ export default function Footer() {
           <div className="md:col-span-5">
             {/* Logo on dark — needs the original with white SHIELD, or we use the mark */}
             <Logo height={38} className="mb-6 brightness-0 invert" />
-            <p className="text-[13px] font-mono text-white/35 leading-relaxed max-w-[300px] mb-5">
+            <p className="text-[13px] font-mono text-white/62 leading-relaxed max-w-[300px] mb-5">
               NHBRC-registered waterproofing specialists. Johannesburg and Gauteng. 10-year written guarantee on every major application.
             </p>
-            <p className="label-dim mb-1">{COMPANY.nhbrc}</p>
-            <p className="label-dim">CETA Accredited</p>
+            <p className="label-dim-on-dark mb-1">{COMPANY.nhbrc}</p>
+            <p className="label-dim-on-dark">CETA Accredited</p>
           </div>
 
           <div className="md:col-span-3">
-            <p className="label mb-5">Systems</p>
+            <p className="label-on-dark mb-5">Systems</p>
             <ul className="space-y-3">
               {[["WP·01","Flat Roof"],["DP·02","Rising Damp"],["BT·03","Basement Tanking"],["BP·04","Balcony Waterproofing"],["RM·05","Maintenance Plans"],["RC·06","Roof Coatings"]].map(([code,name]) => (
                 <li key={code}>
-                  <a href="#services" className="flex items-center gap-2.5 text-[12px] font-mono text-white/30 hover:text-teal transition-colors">
-                    <span className="text-teal/35">{code}</span>{name}
+                  <a href="#services" className="flex items-center gap-2.5 text-[12px] font-mono text-white/58 hover:text-teal transition-colors">
+                    <span className="text-teal/65">{code}</span>{name}
                   </a>
                 </li>
               ))}
@@ -30,20 +30,20 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-4">
-            <p className="label mb-5">Contact</p>
+            <p className="label-on-dark mb-5">Contact</p>
             <ul className="space-y-4">
               {[
                 { l:"Telephone", v:COMPANY.phone, h:`tel:${COMPANY.phone.replace(/\s/g,"")}` },
                 { l:"Email",     v:COMPANY.email, h:`mailto:${COMPANY.email}` },
               ].map(i => (
                 <li key={i.l}>
-                  <p className="label-dim mb-1">{i.l}</p>
-                  <a href={i.h} className="text-[13px] font-mono text-white/45 hover:text-teal transition-colors">{i.v}</a>
+                  <p className="label-dim-on-dark mb-1">{i.l}</p>
+                  <a href={i.h} className="text-[13px] font-mono text-white/68 hover:text-teal transition-colors">{i.v}</a>
                 </li>
               ))}
               <li>
-                <p className="label-dim mb-1">Office</p>
-                <p className="text-[13px] font-mono text-white/40 leading-relaxed">{COMPANY.address}</p>
+                <p className="label-dim-on-dark mb-1">Office</p>
+                <p className="text-[13px] font-mono text-white/62 leading-relaxed">{COMPANY.address}</p>
               </li>
             </ul>
           </div>

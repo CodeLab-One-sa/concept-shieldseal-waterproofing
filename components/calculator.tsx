@@ -56,7 +56,7 @@ export default function QuoteCalculator() {
                 </button>
               ))}
             </div>
-            <p className="text-muted text-[11px] font-mono mt-3">Click a row to select. Rates exclude VAT.</p>
+            <p className="text-ink-mid text-[11px] font-mono mt-3">Click a row to select. Rates exclude VAT.</p>
           </div>
 
           {/* Calculator form */}
@@ -100,7 +100,7 @@ export default function QuoteCalculator() {
                 </div>
               ) : (
                 <div className="border-t border-line pt-7 text-center py-8">
-                  <p className="text-muted text-[12px] font-mono">Select a system and enter the area above.</p>
+                  <p className="text-ink-mid text-[12px] font-mono">Select a system and enter the area above.</p>
                 </div>
               )}
             </div>
