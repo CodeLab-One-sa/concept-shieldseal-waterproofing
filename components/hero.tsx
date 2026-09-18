@@ -1,61 +1,51 @@
 import { ArrowRight } from "lucide-react";
-import { LogoMark } from "./logo";
+import Logo, { LogoMark } from "./logo";
 import { COMPANY, STATS } from "@/lib/content";
 
 export default function Hero() {
   return (
     <section className="relative min-h-[96vh] flex flex-col justify-center overflow-hidden bg-ink dot-texture">
 
-      {/* Teal radial glow — behind the mark, subtle */}
+      {/* Teal glow behind the mark */}
       <div
         className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, rgba(0,170,194,0.08) 0%, transparent 65%)" }}
+        style={{ background: "radial-gradient(ellipse, rgba(0,170,194,0.07) 0%, transparent 65%)" }}
         aria-hidden="true"
       />
 
-      {/* Large background shield mark — barely visible, adds identity */}
-      <div className="absolute right-[-8%] top-1/2 -translate-y-1/2 pointer-events-none select-none" aria-hidden="true">
-        <LogoMark size={520} className="opacity-[0.028]" />
+      {/* Large faint mark — right side background element */}
+      <div
+        className="absolute right-[-6%] top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.045]"
+        aria-hidden="true"
+      >
+        <LogoMark size={480} />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10 w-full py-28 lg:py-36">
         <div className="flex flex-col items-center text-center">
 
-          {/* Mark — centrepiece */}
-          <div
-            className="mb-10"
-            style={{ filter: "drop-shadow(0 0 32px rgba(0,170,194,0.25))" }}
-          >
+          {/* Actual shield mark — large, with glow */}
+          <div className="mb-9" style={{ filter: "drop-shadow(0 0 28px rgba(0,170,194,0.22))" }}>
             <LogoMark size={108} />
           </div>
 
-          {/* Wordmark — large, Barlow Condensed */}
+          {/* Actual full logo — wordmark exactly as designed */}
           <div className="mb-4">
-            <div className="flex items-baseline justify-center">
-              <span
-                className="font-display font-black text-white"
-                style={{ fontSize: "clamp(3.2rem, 8vw, 6rem)", lineHeight: 1, letterSpacing: "-0.02em" }}
-              >
-                SHIELD
-              </span>
-              <span
-                className="font-display font-black text-teal"
-                style={{ fontSize: "clamp(3.2rem, 8vw, 6rem)", lineHeight: 1, letterSpacing: "-0.02em" }}
-              >
-                SEAL
-              </span>
-            </div>
-            <p className="label-dim mt-3">Waterproofing Specialists · Johannesburg · NHBRC Registered</p>
+            <Logo height={54} />
           </div>
 
-          {/* Divider */}
-          <div className="rule-s w-[280px] my-8" />
+          <p className="label-dim mb-9">Johannesburg · NHBRC Registered · Est. 2011</p>
 
-          {/* Tagline */}
-          <h1 className="text-[1.9rem] md:text-[2.6rem] font-black tracking-tight text-white mb-5 text-balance leading-tight" style={{ fontFamily: "var(--font-barlow)" }}>
+          <div className="rule-s w-[260px] mb-10" />
+
+          <h1
+            className="font-display font-black text-white mb-5 text-balance leading-tight"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)", letterSpacing: "-0.02em" }}
+          >
             Water stopped.<br />
             <span className="text-teal">Guaranteed.</span>
           </h1>
+
           <p className="text-white/52 text-[16px] leading-relaxed max-w-[500px] mb-12">
             NHBRC-registered waterproofing contractors since 2011. Flat roofs, rising damp, basements, and balconies. We find the source. We fix it. We back it with a 10-year written guarantee.
           </p>
@@ -66,11 +56,11 @@ export default function Hero() {
               {STATS.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`px-5 py-6 text-center ${i < STATS.length - 1 ? "border-r border-border-s" : ""}`}
+                  className={`px-5 py-7 text-center ${i < STATS.length - 1 ? "border-r border-border-s" : ""}`}
                 >
                   <p
-                    className="font-mono font-bold text-teal leading-none mb-2 tabular-nums"
-                    style={{ fontSize: "2rem" }}
+                    className="font-mono font-bold text-teal leading-none mb-2.5 tabular-nums"
+                    style={{ fontSize: "2.1rem" }}
                   >
                     {s.value}<span style={{ fontSize: "1.2rem" }}>{s.unit}</span>
                   </p>
@@ -94,21 +84,24 @@ export default function Hero() {
             >
               Get a price estimate
             </a>
+            <a
+              href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
+              className="text-teal/60 hover:text-teal font-mono text-[12px] uppercase tracking-widest transition-colors px-4 py-4"
+            >
+              {COMPANY.phone}
+            </a>
           </div>
 
-          {/* NHBRC badge */}
+          {/* Badge */}
           <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5">
             <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
             <span className="label">{COMPANY.nhbrc}</span>
             <div className="w-px h-3 bg-border-s" />
             <span className="label-dim">CETA Accredited</span>
-            <div className="w-px h-3 bg-border-s" />
-            <span className="label-dim">Est. 2011</span>
           </div>
         </div>
       </div>
 
-      {/* Gradient fade to first section */}
       <div
         className="absolute inset-x-0 bottom-0 h-20 pointer-events-none"
         style={{ background: "linear-gradient(to top, #090A0A, transparent)" }}

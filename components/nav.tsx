@@ -34,7 +34,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-[64px]">
 
         <a href="/" aria-label="ShieldSeal Waterproofing home">
-          <Logo size="sm" />
+          <Logo height={36} />
         </a>
 
         <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
