@@ -1,38 +1,35 @@
-import Image from "next/image";
 import AnimateIn from "./animate-in";
 import { RECENT_JOBS } from "@/lib/content";
 
 export default function RecentJobs() {
   return (
-    <section id="jobs" className="py-24 relative overflow-hidden">
-
-      {/* Background: water beads on waterproofing membrane */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/waterproof-drops.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          quality={85}
-        />
-        {/* Slight dark overlay so heading text is readable */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "rgba(12,14,18,0.52)" }}
-        />
-      </div>
+    <section
+      id="jobs"
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/waterproof-drops.png')",
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Light overlay — blends with the white sections above and below */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(248,250,252,0.82)" }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <AnimateIn className="mb-12">
-          <p className="label-on-dark mb-4">Completed Projects: 2025 and 2026</p>
+          <p className="label mb-4">Completed Projects: 2025 and 2026</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             <h2
-              className="font-display font-black text-white text-balance leading-none"
+              className="font-display font-black text-ink text-balance leading-none"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 4.5rem)", letterSpacing: "-0.02em" }}
             >
               Recent jobs<br />across Gauteng.
             </h2>
-            <p className="text-white/72 text-[15px] font-medium leading-relaxed self-end">
+            <p className="text-ink-mid text-[15px] font-medium leading-relaxed self-end">
               References and site photography available on request. 15 to 25 projects completed monthly.
             </p>
           </div>
