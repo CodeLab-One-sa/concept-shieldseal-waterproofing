@@ -9,18 +9,18 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: #090A0A;
-  color: rgba(255,255,255,0.88);
+  background: #FFFFFF;
+  color: #0C0E12;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #090A0A; }
-::-webkit-scrollbar-thumb { background: rgba(0,170,194,0.4); border-radius: 2px; }
-::selection { background: rgba(0,170,194,0.28); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F3F5F7; }
+::-webkit-scrollbar-thumb { background: rgba(0,170,194,0.35); border-radius: 3px; }
+::selection { background: rgba(0,170,194,0.20); }
 
-/* ── Typographic helpers ───────────────────────────────────────────── */
+/* Labels */
 .label {
   font-family: 'Courier New', monospace;
   font-size: 10px;
@@ -35,19 +35,17 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
+  color: #9CA3AF;
 }
+/* Labels on dark backgrounds */
+.label-dark { color: rgba(0,170,194,0.85); }
+.label-dim-dark { color: rgba(255,255,255,0.38); }
 
-/* ── Rules ─────────────────────────────────────────────────────────── */
-.rule       { height: 1px; background: rgba(0,170,194,0.16); }
-.rule-s     { height: 1px; background: rgba(0,170,194,0.36); }
+/* Rules */
+.rule        { height: 1px; background: #E5E7EB; }
+.rule-teal   { height: 1px; background: rgba(0,170,194,0.30); }
+.rule-dark   { height: 1px; background: rgba(255,255,255,0.10); }
 
-/* ── Animate-in ─────────────────────────────────────────────────────── */
-.ai-h { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
+/* Animate-in */
+.ai-h { opacity: 0; transform: translateY(14px); transition: opacity 0.52s ease-out, transform 0.52s ease-out; }
 .ai-v { opacity: 1 !important; transform: none !important; }
-
-/* ── Very subtle teal dot texture for hero ──────────────────────────── */
-.dot-texture {
-  background-image: radial-gradient(circle, rgba(0,170,194,0.10) 1px, transparent 1px);
-  background-size: 28px 28px;
-}

@@ -8,16 +8,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink:    "#090A0A",
-        ink2:   "#131517",
-        ink3:   "#1C2025",
-        teal:   "#00AAC2",
-        "teal-l": "#00BDDA",
-        "teal-d": "#007A8E",
-        "on-teal": "#062830",
-        muted:  "#828D96",
-        border: "rgba(0,170,194,0.14)",
-        "border-s": "rgba(0,170,194,0.32)",
+        // Light backgrounds
+        canvas:     "#FFFFFF",
+        "canvas-s": "#F3F5F7",
+        // Dark section (contact + footer)
+        dark:       "#0C0E12",
+        "dark-s":   "#13161C",
+        // Brand
+        teal:       "#00AAC2",
+        "teal-l":   "#00BED8",
+        "teal-d":   "#007A8E",
+        "on-teal":  "#062830",
+        // Text
+        ink:        "#0C0E12",
+        "ink-mid":  "#374151",
+        muted:      "#6B7280",
+        // Borders
+        line:       "#E5E7EB",
+        "line-d":   "#D1D5DB",
+        "line-teal":"rgba(0,170,194,0.22)",
       },
       fontFamily: {
         sans:    ["var(--font-inter)", "system-ui", "sans-serif"],
