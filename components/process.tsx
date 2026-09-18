@@ -52,11 +52,11 @@ export default function Process() {
             <div className="border border-line">
               {/* Image: contained */}
               <div className="relative h-[240px] border-b border-line overflow-hidden">
-                <Image src="/images/process-balcony.jpg" alt="Completed waterproofed balcony surface"
+                <Image src="/images/process-application.jpg" alt="Waterproofing membrane being applied with brush"
                   fill className="object-cover" quality={82} />
                 <div className="absolute inset-0 bg-ink/20" />
                 <div className="absolute top-4 left-4">
-                  <span className="label" style={{ color:"rgba(255,255,255,0.75)" }}>Completed waterproof surface</span>
+                  <span className="label" style={{ color:"rgba(255,255,255,0.75)" }}>Waterproofing in progress</span>
                 </div>
               </div>
 
