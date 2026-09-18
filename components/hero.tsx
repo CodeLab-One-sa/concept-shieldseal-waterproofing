@@ -1,40 +1,33 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { COMPANY, STATS } from "@/lib/content";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden">
-
-      {/* Background image : actual torch-on waterproofing membrane application */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero-waterproofing.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-          fetchPriority="high"
-          quality={90}
-        />
-        {/* Dark overlay : ensures all white text is clearly readable */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(160deg, rgba(12,14,18,0.80) 0%, rgba(12,14,18,0.70) 50%, rgba(12,14,18,0.86) 100%)"
-          }}
-        />
-        {/* Subtle teal tint from left : ties image to brand colour */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(0,170,194,0.07) 0%, transparent 55%)" }}
-        />
-      </div>
+    <section
+      className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/hero-waterproofing.png')",
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(160deg, rgba(12,14,18,0.80) 0%, rgba(12,14,18,0.70) 50%, rgba(12,14,18,0.86) 100%)"
+        }}
+      />
+      {/* Subtle teal tint from left */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(to right, rgba(0,170,194,0.07) 0%, transparent 55%)" }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full py-28 lg:py-36">
         <div className="flex flex-col items-center text-center">
 
-          {/* Registration line */}
           <div className="flex items-center gap-3 mb-8">
             <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
             <p className="font-mono text-[11px] font-semibold tracking-[0.20em] uppercase text-white/68">
@@ -42,7 +35,6 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Headline */}
           <h1
             className="font-display font-black text-white mb-6 text-balance leading-tight"
             style={{ fontSize: "clamp(2.8rem, 7vw, 5.2rem)", letterSpacing: "-0.02em" }}
@@ -55,7 +47,6 @@ export default function Hero() {
             NHBRC-registered waterproofing contractors since 2011. Flat roofs, rising damp, basements, and balconies. We find the source. We fix it. We back it with a 10-year written guarantee.
           </p>
 
-          {/* Stats */}
           <div className="w-full max-w-[680px] mb-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 border border-white/22">
               {STATS.map((s, i) => (
@@ -74,7 +65,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
             <a
               href="#contact"
@@ -96,7 +86,6 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* NHBRC badge */}
           <div className="inline-flex items-center gap-3 border border-white/30 backdrop-blur-sm bg-white/[0.06] px-5 py-2.5">
             <span className="label">{COMPANY.nhbrc}</span>
             <div className="w-px h-3 bg-white/40" />
