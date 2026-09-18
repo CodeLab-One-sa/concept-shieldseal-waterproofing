@@ -8,7 +8,7 @@ export const COMPANY = {
   url: "https://shieldseal-waterproofing.vercel.app",
   nhbrc: "NHBRC Reg. No. 45821",
   founded: "2011",
-  codelab: "https://codelabone.co.za/industries/waterproofing",
+  codelab: "https://codelabone.co.za/portfolio/shieldseal-waterproofing",
 };
 
 export const STATS = [

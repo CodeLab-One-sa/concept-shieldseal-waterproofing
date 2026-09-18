@@ -4,10 +4,9 @@ import { COMPANY, STATS } from "@/lib/content";
 export default function Hero() {
   return (
     <section
-      className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden"
+      className="parallax relative min-h-[92vh] flex flex-col justify-center overflow-hidden"
       style={{
         backgroundImage: "url('/images/hero-waterproofing.png')",
-        backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
