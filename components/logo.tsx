@@ -1,16 +1,14 @@
 import Image from "next/image";
 
-/**
- * Full ShieldSeal logo — actual client-supplied PNG, white background removed.
- * The tight crop is 1057×287px (3.68:1 aspect ratio).
- */
+// logo-tight.png: 1058×288px (3.674:1) — full logo, transparent bg
+// logo-mark.png:  229×288px  (0.795:1) — shield mark only, transparent bg
+
 export default function Logo({ height = 38, className = "" }: { height?: number; className?: string }) {
-  const width = Math.round(height * 3.68);
   return (
     <Image
       src="/logo-tight.png"
       alt="ShieldSeal Waterproofing"
-      width={width}
+      width={Math.round(height * 3.674)}
       height={height}
       className={className}
       priority
@@ -18,18 +16,14 @@ export default function Logo({ height = 38, className = "" }: { height?: number;
   );
 }
 
-/**
- * Shield mark only — just the icon portion (301×287px, ~1.05:1 ratio).
- * Used in the hero and as a decorative element.
- */
 export function LogoMark({ size = 40, className = "" }: { size?: number; className?: string }) {
   return (
     <Image
       src="/logo-mark.png"
       alt=""
       aria-hidden="true"
-      width={size}
-      height={Math.round(size * 0.954)}
+      width={Math.round(size * 0.795)}
+      height={size}
       className={className}
     />
   );

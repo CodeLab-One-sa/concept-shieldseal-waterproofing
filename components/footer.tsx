@@ -21,7 +21,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-5">
-            <Logo height={40} className="mb-7" />
+            <Logo height={38} className="mb-7" />
             <p className="text-[13px] font-mono text-white/35 leading-relaxed max-w-[320px] mb-7">
               NHBRC-registered waterproofing specialists since 2011. Johannesburg and Gauteng. Written 10-year workmanship guarantee on every major application.
             </p>
