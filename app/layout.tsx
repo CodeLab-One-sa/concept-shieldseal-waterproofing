@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed } from "next/font/google";
+import { Inter, Exo_2 } from "next/font/google";
 import "./globals.css";
 import { COMPANY } from "@/lib/content";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const barlowCondensed = Barlow_Condensed({
+// Exo 2 — geometric, slightly condensed, technical bold.
+// Closest Google Fonts match to the ShieldSeal logo wordmark proportions.
+const exo2 = Exo_2({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  variable: "--font-barlow",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-exo2",
   display: "swap",
 });
 
@@ -51,17 +53,22 @@ const orgSchema = {
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "17:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "07:00", "closes": "13:00" },
   ],
-  "areaServed": { "@type": "City", "name": "Johannesburg" },
+  "areaServed": [
+    { "@type": "City", "name": "Johannesburg" },
+    { "@type": "City", "name": "Midrand" },
+    { "@type": "City", "name": "Sandton" },
+    { "@type": "City", "name": "Centurion" },
+  ],
   "description": "NHBRC-registered waterproofing specialists since 2011.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-ZA" className={`${inter.variable} ${barlowCondensed.variable}`}>
+    <html lang="en-ZA" className={`${inter.variable} ${exo2.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
-      <body className="bg-ink text-white antialiased font-sans">{children}</body>
+      <body className="bg-canvas text-ink antialiased font-sans">{children}</body>
     </html>
   );
 }

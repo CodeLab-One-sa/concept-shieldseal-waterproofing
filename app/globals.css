@@ -4,7 +4,7 @@
 
 :root {
   --font-inter: 'Inter', system-ui, sans-serif;
-  --font-barlow: 'Barlow Condensed', system-ui, sans-serif;
+  --font-exo2: 'Exo 2', system-ui, sans-serif;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
