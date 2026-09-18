@@ -1,6 +1,6 @@
 import Nav          from "@/components/nav";
 import Hero         from "@/components/hero";
-import Guarantee    from "@/components/guarantee";
+import Ticker       from "@/components/ticker";
 import Services     from "@/components/services";
 import QuoteCalculator from "@/components/calculator";
 import RecentJobs   from "@/components/recent-jobs";
@@ -16,7 +16,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Guarantee />
+        <Ticker />
         <Services />
         <QuoteCalculator />
         <RecentJobs />

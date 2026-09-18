@@ -1,29 +1,26 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
-import { COMPANY, STATS } from "@/lib/content";
+import { COMPANY } from "@/lib/content";
 
 export default function Hero() {
   return (
     <section
-      className="parallax relative flex flex-col overflow-hidden"
+      className="parallax relative flex flex-col justify-center overflow-hidden"
       style={{
-        minHeight: "93vh",
+        minHeight: "88vh",
         backgroundImage: "url('/images/hero-waterproofing.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}
     >
-      {/* Gradient overlay: gets progressively darker toward the bottom where text sits */}
+      {/* Gradient overlay — darkens progressively toward bottom */}
       <div
         className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to bottom, rgba(10,12,16,0.60) 0%, rgba(10,12,16,0.78) 35%, rgba(10,12,16,0.92) 70%, rgba(10,12,16,0.96) 100%)"
-        }}
+        style={{ background: "linear-gradient(to bottom, rgba(10,12,16,0.60) 0%, rgba(10,12,16,0.78) 35%, rgba(10,12,16,0.92) 70%, rgba(10,12,16,0.96) 100%)" }}
       />
-      {/* Subtle teal tint from left */}
+      {/* Subtle teal wash from left */}
       <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,170,194,0.06) 0%, transparent 50%)" }} />
 
-      {/* Main content — centred vertically in the flex-1 space */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 lg:px-10 py-20">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 lg:px-10 py-24 lg:py-32">
 
         {/* NHBRC credential badge */}
         <div className="inline-flex items-center gap-2.5 border border-white/30 bg-white/[0.08] backdrop-blur-sm px-5 py-2.5 mb-10">
@@ -33,7 +30,7 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Main headline */}
+        {/* Headline */}
         <h1
           className="font-display font-black text-white text-balance leading-none mb-6"
           style={{ fontSize: "clamp(3rem, 8vw, 5.8rem)", letterSpacing: "-0.02em" }}
@@ -42,8 +39,8 @@ export default function Hero() {
           <span className="text-teal">Guaranteed.</span>
         </h1>
 
-        {/* Body paragraph */}
-        <p className="text-white text-[17px] font-medium leading-relaxed max-w-[520px] mb-10 opacity-90">
+        {/* Body */}
+        <p className="text-white text-[17px] font-medium leading-relaxed max-w-[520px] mb-10" style={{ opacity: 0.90 }}>
           NHBRC-registered waterproofing contractors since 2011. Flat roofs, rising damp, basements, and balconies. We find the source. We fix it. We back it with a 10-year written guarantee.
         </p>
 
@@ -65,38 +62,11 @@ export default function Hero() {
 
         <a
           href={`tel:${COMPANY.phone.replace(/\s/g,"")}`}
-          className="font-mono text-[13px] font-semibold text-white/70 hover:text-white transition-colors tracking-widest"
+          className="font-mono text-[13px] font-semibold hover:text-white transition-colors tracking-widest"
+          style={{ color: "rgba(255,255,255,0.70)" }}
         >
           {COMPANY.phone}
         </a>
-      </div>
-
-      {/* Stats bar — anchored to the bottom of the hero section */}
-      <div className="relative z-10 border-t border-white/20 bg-black/45 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            {STATS.map((s, i) => (
-              <div
-                key={s.label}
-                className={`
-                  flex flex-col items-center justify-center px-4 py-7 text-center
-                  ${i < STATS.length - 1 ? "border-r border-white/20" : ""}
-                  ${i >= 2 ? "border-t border-white/20 lg:border-t-0" : ""}
-                `}
-              >
-                <p
-                  className="font-mono font-bold text-teal tabular-nums mb-2"
-                  style={{ fontSize: "2.1rem", lineHeight: 1 }}
-                >
-                  {s.value}<span style={{ fontSize: "1.15rem" }}>{s.unit}</span>
-                </p>
-                <p className="font-mono text-[10px] font-semibold tracking-[0.16em] uppercase text-white/80 leading-snug">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

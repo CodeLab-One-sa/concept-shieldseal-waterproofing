@@ -74,6 +74,13 @@ body {
   }
 }
 
+
+/* ── Continuous ticker scroll ───────────────────────────────────────── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ── Animate-in ─────────────────────────────────────────────────────── */
 .ai-h { opacity: 0; transform: translateY(14px); transition: opacity 0.52s ease-out, transform 0.52s ease-out; }
 .ai-v { opacity: 1 !important; transform: none !important; }
